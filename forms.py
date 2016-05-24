@@ -8,7 +8,7 @@ class LoginForm(Form):
 	
 
 class RegistrationForm(Form):
-	username = TextField('username', [validators.Length(min=4, max=20)])
+	username = TextField('Username', [validators.Length(min=4, max=20)])
 	email = TextField('Email Address', [validators.Length(min=8, max=50)])
 	password = PasswordField('Password', [validators.Required(),validators.Length(min=6, max=30),
 				validators.EqualTo('confirm', message="Password must match")])	

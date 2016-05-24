@@ -86,22 +86,24 @@ def logout():
 
 @app.route('/register/', methods=['GET', 'POST'])
 def register():
-    try:
+	error = ''
+	try:
 		form = RegistrationForm(request.form)
 		
-		if request.method == 'GET':
-			return render_template('register.html',form=form)
-
-		u = form.username.data
-		#p = sha256_crypt.encrypt((str(form.password.data)))
-		p = form.password.data
-		e = form.email.data
-		d = datetime.datetime.utcnow()
-		user = User(username=u, password=p, email=e, regdate=d)
-		db.session.add(user)
-		db.session.commit()
-		flash('User successfully registered')
-		return redirect(url_for('index'))
-		
-    except Exception as e:
-        return(str(e))	
+		if form.validate_on_submit():
+			u = form.username.data
+			#p = sha256_crypt.encrypt((str(form.password.data)))
+			p = form.password.data
+			e = form.email.data
+			d = datetime.datetime.utcnow()
+			user = User(username=u, password=p, email=e, regdate=d)
+			db.session.add(user)
+			db.session.commit()
+			session['logged_in'] = True
+			login_user(user)
+			flash('User successfully registered')
+			return redirect(url_for('index'))
+		#flash(form.errors)
+		return render_template('register.html',form=form,error=error)
+	except Exception as e:
+		return render_template('register.html',form=form,error=error)

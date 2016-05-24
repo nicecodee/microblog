@@ -27,10 +27,7 @@ def index():
             'body': 'The Avengers movie was so cool!' 
         }
     ]
-    return render_template('index.html',
-                           title='Home',
-                           user=user,
-                           posts=posts)
+    return render_template('index.html',title='Home',user=user,posts=posts)
 						   
 						   
 
@@ -43,24 +40,22 @@ def login():
 			session['remember_me'] = form.remember_me.data
 			u = form.username.data
 			p = form.password.data
-			#check if username matches
-			if User.query.filter_by(username=u, password=p).first() is None:
-				flash("user not found")
-			#check if password matches
-			# else if sha256_crypt.verify(p, data):
-			else:
-				user = User.query.filter_by(username=u, password=p).first()
-				flash("You are now logged in!")
-				session['logged_in'] = True
-				login_user(user)
-				return redirect(url_for('index'))
-		return render_template('login.html', 
-							   title='Sign In',
-							   form=form,
-							   error=error)
+			#check username 
+			if User.query.filter_by(username=u).first() is not None:
+				user = User.query.filter_by(username=u).first()
+				tmp_p = user.password
+				#check password hash matching
+				if sha256_crypt.verify(p, tmp_p):
+					session['logged_in'] = True
+					login_user(user)
+					flash("You are now logged in!")
+					return redirect(url_for('index'))
+				
+			flash("Invalid credentials, try again!")	
+		return render_template('login.html', title='Sign In',form=form,error=error)
 						   
 	except Exception as e:
-		#return(str(e))							   
+		#return(str(e))	
 		error = "Invalid credentials, try again!"
 		return render_template('login.html', title='Sign In',form=form,error=error)
 		
@@ -93,13 +88,12 @@ def register():
 		if form.validate_on_submit():
 			u = form.username.data
 			
-			#if username already exists, go to register.html
+			#check duplicated username
 			if User.query.filter_by(username=u).first() is not None:
 				flash("username taken! Try another one!")
 				return render_template('register.html', form=form,error=error)
 			else:
-				#p = sha256_crypt.encrypt((str(form.password.data)))
-				p = form.password.data
+				p = sha256_crypt.encrypt((str(form.password.data))) #hash the password
 				e = form.email.data
 				d = datetime.datetime.utcnow()
 				user = User(username=u, password=p, email=e, regdate=d)

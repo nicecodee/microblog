@@ -2,9 +2,12 @@ from __init__ import db
 
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    nickname = db.Column(db.String(64), index=True, unique=True)
+    username = db.Column(db.String(64), index=True, unique=True)
+    password = db.Column(db.String(20))
     email = db.Column(db.String(120), index=True, unique=True)
     posts = db.relationship('Post', backref='author', lazy='dynamic')
+    regdate = db.Column(db.DateTime)
+	
 
     @property
     def is_authenticated(self):
@@ -22,10 +25,19 @@ class User(db.Model):
         try:
             return unicode(self.id)  # python 2
         except NameError:
-            return str(self.id)  # python 3
-
+            return str(self.id)  # python 3		
+	
+	
+	def __init__(self , username, password, email, posts, regdate):
+		self.username = username
+		self.password = password
+		self.email = email
+		self.posts = posts
+		self.regdate = datetime.utcnow()
+	
+			
     def __repr__(self):
-        return '<User %r>' % (self.nickname)
+        return '<User %r>' % (self.username)
 
 class Post(db.Model):
     id = db.Column(db.Integer, primary_key = True)

@@ -28,12 +28,12 @@ class User(db.Model):
             return str(self.id)  # python 3		
 	
 	
-	def __init__(self , username, password, email, posts, regdate):
-		self.username = username
-		self.password = password
-		self.email = email
-		self.posts = posts
-		self.regdate = datetime.utcnow()
+	# def __init__(self , username, password, email, posts, regdate):
+		# self.username = username
+		# self.password = password
+		# self.email = email
+		# self.posts = posts
+		# self.regdate = datetime.utcnow()
 	
 			
     def __repr__(self):

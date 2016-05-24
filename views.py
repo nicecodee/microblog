@@ -92,17 +92,23 @@ def register():
 		
 		if form.validate_on_submit():
 			u = form.username.data
-			#p = sha256_crypt.encrypt((str(form.password.data)))
-			p = form.password.data
-			e = form.email.data
-			d = datetime.datetime.utcnow()
-			user = User(username=u, password=p, email=e, regdate=d)
-			db.session.add(user)
-			db.session.commit()
-			session['logged_in'] = True
-			login_user(user)
-			flash('User successfully registered')
-			return redirect(url_for('index'))
+			
+			#if username already exists, go to register.html
+			if User.query.filter_by(username=u).first() is not None:
+				flash("username taken! Try another one!")
+				return render_template('register.html', form=form,error=error)
+			else:
+				#p = sha256_crypt.encrypt((str(form.password.data)))
+				p = form.password.data
+				e = form.email.data
+				d = datetime.datetime.utcnow()
+				user = User(username=u, password=p, email=e, regdate=d)
+				db.session.add(user)
+				db.session.commit()
+				session['logged_in'] = True
+				login_user(user)
+				flash('User successfully registered')
+				return redirect(url_for('index'))
 		#flash(form.errors)
 		return render_template('register.html',form=form,error=error)
 	except Exception as e:

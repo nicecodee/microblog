@@ -107,3 +107,17 @@ def register():
 		return render_template('register.html',form=form,error=error)
 	except Exception as e:
 		return render_template('register.html',form=form,error=error)
+		
+		
+@app.route('/user/<username>/')
+@login_required
+def user(username):
+    user = User.query.filter_by(username=username).first()
+    if user == None:
+        flash('User %s not found.' % username)
+        return redirect(url_for('index'))
+    posts = [
+        {'author': user, 'body': 'Test post #1'},
+        {'author': user, 'body': 'Test post #2'}
+    ]
+    return render_template('user.html',user=user,posts=posts)		

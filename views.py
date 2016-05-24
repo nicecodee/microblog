@@ -11,12 +11,6 @@ from passlib.hash import sha256_crypt
 def page_not_found(e):
 	return  render_template("404.html")
 
-
-#delete this view func afte test complete
-@app.route('/test/')
-#@login_required
-def test_page():	
-	return  render_template("test.html")
 	
 @app.route('/')
 @app.route('/index/')
@@ -44,8 +38,6 @@ def index():
 def login():
 	error = ''
 	try:
-		# if g.user is not None and g.user.is_authenticated:
-			# return redirect(url_for('test_page'))
 		form = LoginForm()
 		if form.validate_on_submit():
 			session['remember_me'] = form.remember_me.data
@@ -90,16 +82,16 @@ def logout():
 	session.clear()
 	flash("You have been logged out!")
 	return redirect(url_for('index'))
-	
-	
-@app.route('/register/' , methods=['GET','POST'])
+
+
+@app.route('/register/', methods=['GET', 'POST'])
 def register():
     try:
-		if request.method == 'GET':
-			return render_template('register.html')
-		
 		form = RegistrationForm(request.form)
 		
+		if request.method == 'GET':
+			return render_template('register.html',form=form)
+
 		u = form.username.data
 		#p = sha256_crypt.encrypt((str(form.password.data)))
 		p = form.password.data
@@ -112,4 +104,4 @@ def register():
 		return redirect(url_for('index'))
 		
     except Exception as e:
-        return(str(e))						   
+        return(str(e))	

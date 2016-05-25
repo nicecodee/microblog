@@ -113,6 +113,9 @@ def register():
 				user = User(username=u, password=p, email=e, regdate=d)
 				db.session.add(user)
 				db.session.commit()
+				#make the user follow him/herself
+				db.session.add(user.follow(user))
+				db.session.commit()
 				session['logged_in'] = True
 				login_user(user)
 				flash('User successfully registered')

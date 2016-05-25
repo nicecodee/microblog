@@ -5,6 +5,7 @@ from forms import LoginForm, RegistrationForm, EditForm, PostForm
 from models import User, Post
 from datetime import datetime
 from passlib.hash import sha256_crypt
+from config import POSTS_PER_PAGE
 
 
 @app.errorhandler(404)
@@ -19,9 +20,9 @@ def internal_error(error):
 
 @app.route('/', methods=['GET', 'POST'])
 @app.route('/index/', methods=['GET', 'POST'])
+@app.route('/index/<int:page>/', methods=['GET', 'POST'])
 @login_required
-def index():
-	error = ''
+def index(page=1):
 	try:
 		form = PostForm()
 		if form.validate_on_submit():
@@ -30,14 +31,12 @@ def index():
 			db.session.commit()
 			flash('Your post is now live!')
 			return redirect(url_for('index'))
-		#flash('form error %s' % form.errors)
-		posts = g.user.followed_posts().all()
-		return render_template('index.html',title='Home',form=form,posts=posts)
+
+		posts = g.user.followed_posts().paginate(page, POSTS_PER_PAGE, False)
+		return render_template('index.html',title='Home',form=form,posts=posts)		   
 	
 	except Exception as e:
-		return(str(e))
-		return render_template('index.html',title='Home',form=form,posts=posts)			   
-						   
+		return(str(e))	
 
 @app.route('/login/', methods=['GET', 'POST'])
 def login():
@@ -132,17 +131,15 @@ def register():
 		
 		
 @app.route('/user/<username>/')
+@app.route('/user/<username>/<int:page>/')
 @login_required
-def user(username):
+def user(username, page=1):
     user = User.query.filter_by(username=username).first()
-    if user == None:
+    if user is None:
         flash('User %s not found.' % username)
         return redirect(url_for('index'))
-    posts = [
-        {'author': user, 'body': 'Test post #1'},
-        {'author': user, 'body': 'Test post #2'}
-    ]
-    return render_template('user.html',user=user,posts=posts)	
+    posts = user.posts.paginate(page, POSTS_PER_PAGE, False)
+    return render_template('user.html',user=user,posts=posts)
 
 
 @app.route('/edit/', methods=['GET', 'POST'])
@@ -162,7 +159,7 @@ def edit():
     return render_template('edit.html', form=form)	
 	
 	
-@app.route('/follow/<username>')
+@app.route('/follow/<username>/')
 @login_required
 def follow(username):
     user = User.query.filter_by(username=username).first()
@@ -181,7 +178,7 @@ def follow(username):
     flash('You are now following ' + username + '!')
     return redirect(url_for('user', username=username))
 
-@app.route('/unfollow/<username>')
+@app.route('/unfollow/<username>/')
 @login_required
 def unfollow(username):
     user = User.query.filter_by(username=username).first()

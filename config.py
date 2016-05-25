@@ -15,3 +15,6 @@ MAIL_PASSWORD = None
 
 # administrator list
 ADMINS = ['freefor5@gmail.com']
+
+# pagination
+POSTS_PER_PAGE = 3

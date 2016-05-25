@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+	<h4>Woops, page does not exist!!(404)</h4>
+
+	{% if session.logged_in %}
+		<a href="/index/"> Go Back</a>
+	{% else %}
+		<a href="/login/"> Login</a>
+	{% endif %}
+		
+
+{% endblock %}

@@ -1,5 +1,6 @@
 from flask.ext.wtf import Form
-from wtforms import StringField, BooleanField, TextField, PasswordField, validators
+from wtforms import StringField, BooleanField, TextField, PasswordField, validators, TextAreaField
+from wtforms.validators import DataRequired, Length
 
 class LoginForm(Form):
 	username = StringField('username',  [validators.Required()])
@@ -14,3 +15,8 @@ class RegistrationForm(Form):
 				validators.EqualTo('confirm', message="Password must match")])	
 	confirm = PasswordField('Repeat Password')
 	accept_tos = BooleanField('I accept the <a href="/tos/">Terms of Service</a> and the <a href="/privacy/">Privacy Notice</a> (Last updated May 2016)', [validators.Required()])
+	
+	
+class EditForm(Form):
+    username = StringField('username', validators=[DataRequired()])
+    about_me = TextAreaField('about_me', validators=[Length(min=0, max=140)])

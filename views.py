@@ -8,8 +8,13 @@ from passlib.hash import sha256_crypt
 
 
 @app.errorhandler(404)
-def page_not_found(e):
-	return  render_template("404.html")
+def not_found_error(error):
+    return render_template('404.html'), 404
+
+@app.errorhandler(500)
+def internal_error(error):
+    db.session.rollback()
+    return render_template('500.html'), 500
 
 	
 @app.route('/')
@@ -90,25 +95,31 @@ def register():
 		
 		if form.validate_on_submit():
 			u = form.username.data
+			recommend_name = User.make_unique_username(u)
 			
+			#flash('1st error %s' % form.errors)
 			#check duplicated username
-			if User.query.filter_by(username=u).first() is not None:
-				flash("username taken! Try another one!")
+			if User.query.filter_by(username=u).first() is not None:		
+				flash('username taken!  Try another. For example: %s' % recommend_name)
+				#flash('2nd error %s' % form.errors)
 				return render_template('register.html', form=form,error=error)
 			else:
 				p = sha256_crypt.encrypt((str(form.password.data))) #hash the password
 				e = form.email.data
-				d = datetime.datetime.utcnow()
+				d = datetime.utcnow()
 				user = User(username=u, password=p, email=e, regdate=d)
 				db.session.add(user)
 				db.session.commit()
 				session['logged_in'] = True
 				login_user(user)
 				flash('User successfully registered')
+				#flash('3rd error %s' % form.errors)
 				return redirect(url_for('index'))
-		#flash(form.errors)
+			#flash('4th error %s' % form.errors)
 		return render_template('register.html',form=form,error=error)
 	except Exception as e:
+		#return(str(e))
+		#flash('5th error %s' % form.errors)
 		return render_template('register.html',form=form,error=error)
 		
 		
@@ -129,7 +140,7 @@ def user(username):
 @app.route('/edit/', methods=['GET', 'POST'])
 @login_required
 def edit():
-    form = EditForm()
+    form = EditForm(g.user.username)
     if form.validate_on_submit():
         g.user.username = form.username.data
         g.user.about_me = form.about_me.data

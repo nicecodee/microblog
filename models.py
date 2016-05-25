@@ -33,10 +33,22 @@ class User(db.Model):
 	def __repr__(self):
 		return '<User %r>' % (self.username)
 
-# Newly added for user avatars
+	# Newly added for user avatars
 	def avatar(self, size):
 		return 'http://www.gravatar.com/avatar/%s?d=mm&s=%d' % (md5(self.email.encode('utf-8')).hexdigest(), size)		
-		
+
+	#to make the username unique		
+	@staticmethod
+	def make_unique_username(username):
+		if User.query.filter_by(username=username).first() is None:
+			return username
+		version = 2
+		while True:
+			new_username = username + str(version)
+			if User.query.filter_by(username=new_username).first() is None:
+				break
+			version += 1
+		return new_username		
 		
 		
 class Post(db.Model):

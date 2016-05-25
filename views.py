@@ -1,8 +1,8 @@
 from flask import render_template, flash, redirect, session, url_for, request, g
 from flask.ext.login import login_user, logout_user, current_user, login_required
 from __init__ import app, db, lm
-from forms import LoginForm, RegistrationForm, EditForm
-from models import User
+from forms import LoginForm, RegistrationForm, EditForm, PostForm
+from models import User, Post
 from datetime import datetime
 from passlib.hash import sha256_crypt
 
@@ -16,24 +16,27 @@ def internal_error(error):
     db.session.rollback()
     return render_template('500.html'), 500
 
-	
-@app.route('/')
-@app.route('/index/')
+
+@app.route('/', methods=['GET', 'POST'])
+@app.route('/index/', methods=['GET', 'POST'])
 @login_required
 def index():
-    user = g.user
-    posts = [
-        { 
-            'author': {'username': 'John'}, 
-            'body': 'Beautiful day in Portland!' 
-        },
-        { 
-            'author': {'username': 'Susan'}, 
-            'body': 'The Avengers movie was so cool!' 
-        }
-    ]
-    return render_template('index.html',title='Home',user=user,posts=posts)
-						   
+	error = ''
+	try:
+		form = PostForm()
+		if form.validate_on_submit():
+			post = Post(body=form.post.data, timestamp=datetime.utcnow(), author=g.user)
+			db.session.add(post)
+			db.session.commit()
+			flash('Your post is now live!')
+			return redirect(url_for('index'))
+		#flash('form error %s' % form.errors)
+		posts = g.user.followed_posts().all()
+		return render_template('index.html',title='Home',form=form,posts=posts)
+	
+	except Exception as e:
+		return(str(e))
+		return render_template('index.html',title='Home',form=form,posts=posts)			   
 						   
 
 @app.route('/login/', methods=['GET', 'POST'])
@@ -45,20 +48,19 @@ def login():
 			session['remember_me'] = form.remember_me.data
 			u = form.username.data
 			p = form.password.data
+			
+			#flash('form error %s' % form.errors)
 			#check username 
 			if User.query.filter_by(username=u).first() is not None:
 				user = User.query.filter_by(username=u).first()
 				tmp_p = user.password
+
 				#check password hash matching
 				if sha256_crypt.verify(p, tmp_p):
 					session['logged_in'] = True
 					login_user(user)
-					# make the user follow him/herself
-					db.session.add(user.follow(user))
-					db.session.commit()
 					flash("You are now logged in!")
 					return redirect(url_for('index'))
-				
 			flash("Invalid credentials, try again!")	
 		return render_template('login.html', title='Sign In',form=form,error=error)
 						   

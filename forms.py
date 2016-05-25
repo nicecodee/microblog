@@ -36,3 +36,7 @@ class EditForm(Form):
             self.username.errors.append('This username is already in use. Please choose another one.')
             return False
         return True
+		
+		
+class PostForm(Form):
+    post = StringField('post', validators=[DataRequired()])

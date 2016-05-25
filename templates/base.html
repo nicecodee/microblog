@@ -7,14 +7,15 @@
     {% endif %}
   </head>
   <body>
-    <div>Microblog:
+	
+	<div>Microblog:
         {% if session.logged_in %}
 		  <a href="{{ url_for('index') }}"> Home </a>
 		| <a href="{{ url_for('user', username=g.user.username) }}">Your Profile</a>
+		| <form style="display: inline;" action="{{ url_for('search') }}" method="post" name="search">{{ g.search_form.hidden_tag() }}{{ g.search_form.search(size=20) }}<input type="submit" value="Search"></form>
         | <a href="{{ url_for('logout') }}"> Logout </a>
 		{% else %}
 		<a href="{{ url_for('index') }}"> Home </a>
-		| <a href="{{ url_for('login') }}"> Login </a>
         | <a href="{{ url_for('register') }}"> Singup </a>
         {% endif %}
     </div>	

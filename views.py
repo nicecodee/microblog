@@ -6,6 +6,8 @@ from models import User, Post
 from datetime import datetime
 from passlib.hash import sha256_crypt
 from config import POSTS_PER_PAGE
+from forms import SearchForm
+from config import MAX_SEARCH_RESULTS
 
 
 @app.errorhandler(404)
@@ -76,7 +78,9 @@ def before_request():
         g.user.last_seen = datetime.utcnow()
         db.session.add(g.user)
         db.session.commit()
-	
+        g.search_form = SearchForm()
+
+		
 					   
 @lm.user_loader
 def load_user(id):
@@ -196,3 +200,20 @@ def unfollow(username):
     db.session.commit()
     flash('You have stopped following ' + username + '.')
     return redirect(url_for('user', username=username))
+	
+	
+@app.route('/search/', methods=['POST'])
+@login_required
+def search():
+	if not g.search_form.validate_on_submit():
+		return redirect(url_for('index'))
+	return redirect(url_for('search_results', query=g.search_form.search.data))	
+	
+	
+
+@app.route('/search_results/<query>')
+@login_required
+def search_results(query):
+	results = Post.query.whoosh_search(query, MAX_SEARCH_RESULTS).all()
+	return render_template('search_results.html',query=query,results=results)
+

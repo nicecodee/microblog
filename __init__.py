@@ -3,17 +3,20 @@ from flask.ext.sqlalchemy import SQLAlchemy
 import os
 from flask.ext.login import LoginManager
 from config import basedir, ADMINS, MAIL_SERVER, MAIL_PORT, MAIL_USERNAME, MAIL_PASSWORD
+from flask.ext.mail import Mail
 
 app = Flask(__name__)
 app.config.from_object('config')
 db = SQLAlchemy(app)
+mail = Mail(app)
 
 lm = LoginManager()
 lm.init_app(app)
 lm.login_view = 'login'
 
-#keep views and models from outside at the bottom
+#import views and models at the bottom
 import views, models
+
 
 
 #send mail for loggin

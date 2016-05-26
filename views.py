@@ -8,6 +8,7 @@ from passlib.hash import sha256_crypt
 from config import POSTS_PER_PAGE
 from forms import SearchForm
 from config import MAX_SEARCH_RESULTS
+from emails import follower_notification
 
 
 @app.errorhandler(404)
@@ -180,6 +181,8 @@ def follow(username):
     db.session.add(u)
     db.session.commit()
     flash('You are now following ' + username + '!')
+	#follower_notification is not working, so i will comment it for now
+	#follower_notification(user, g.user)
     return redirect(url_for('user', username=username))
 
 @app.route('/unfollow/<username>/')
@@ -216,4 +219,3 @@ def search():
 def search_results(query):
 	results = Post.query.whoosh_search(query, MAX_SEARCH_RESULTS).all()
 	return render_template('search_results.html',query=query,results=results)
-

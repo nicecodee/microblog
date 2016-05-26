@@ -7,14 +7,27 @@ basedir = os.path.abspath(os.path.dirname(__file__))
 SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(basedir, 'app.db')
 SQLALCHEMY_MIGRATE_REPO = os.path.join(basedir, 'db_repository')
 
+# local mail server settings
+# MAIL_SERVER = 'localhost'
+# MAIL_PORT = 25
+# MAIL_USERNAME = None
+# MAIL_PASSWORD = None
+
 # mail server settings
-MAIL_SERVER = 'localhost'
+MAIL_SERVER = 'smtp.163.com'
 MAIL_PORT = 25
-MAIL_USERNAME = None
-MAIL_PASSWORD = None
+MAIL_USE_TLS = True
+MAIL_USE_SSL = False
+MAIL_USERNAME = os.environ.get('goodtre@163.com')
+MAIL_PASSWORD = os.environ.get('Stone001')
+# # MAIL_USERNAME = 'goodtre@163.com'
+# # MAIL_PASSWORD = 'Stone001'
 
 # administrator list
-ADMINS = ['freefor5@gmail.com']
+ADMINS = ['goodtre@163.com']
+
+# administrator list
+ADMINS = ['goodtre@163.com']
 
 # pagination
 POSTS_PER_PAGE = 3

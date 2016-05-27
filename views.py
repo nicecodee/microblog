@@ -167,24 +167,29 @@ def edit():
 @app.route('/follow/<username>/')
 @login_required
 def follow(username):
-    user = User.query.filter_by(username=username).first()
-    if user is None:
-        flash('User %s not found.' % username)
-        return redirect(url_for('index'))
-    if user == g.user:
-        flash('You can\'t follow yourself!')
-        return redirect(url_for('user', username=username))
-    u = g.user.follow(user)
-    if u is None:
-        flash('Cannot follow ' + username + '.')
-        return redirect(url_for('user', username=username))
-    db.session.add(u)
-    db.session.commit()
-    flash('You are now following ' + username + '!')
-	#follower_notification is not working, so i will comment it for now
-	#follower_notification(user, g.user)
-    return redirect(url_for('user', username=username))
-
+	try:
+		user = User.query.filter_by(username=username).first()
+		if user is None:
+			flash('User %s not found.' % username)
+			return redirect(url_for('index'))
+		if user == g.user:
+			flash('You can\'t follow yourself!')
+			return redirect(url_for('user', username=username))
+		u = g.user.follow(user)
+		if u is None:
+			flash('Cannot follow ' + username + '.')
+			return redirect(url_for('user', username=username))
+		db.session.add(u)
+		db.session.commit()
+		flash('You are now following ' + username + '!')
+		# Send email to notify the followed user
+		follower_notification(user,g.user)
+		return redirect(url_for('user', username=username))
+	
+	except Exception as e:
+		return(str(e))
+		
+		
 @app.route('/unfollow/<username>/')
 @login_required
 def unfollow(username):

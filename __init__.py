@@ -6,7 +6,6 @@ from config import basedir, ADMINS, MAIL_SERVER, MAIL_PORT, MAIL_USERNAME, MAIL_
 from flask.ext.mail import Mail
 
 
-
 app = Flask(__name__)
 app.config.from_object('config')
 db = SQLAlchemy(app)

@@ -1,0 +1,740 @@
+2016-05-25 01:54:41,041 INFO: microblog startup [in ./__init__.py:39]
+2016-05-25 01:56:27,314 INFO: microblog startup [in ./__init__.py:40]
+2016-05-25 01:58:16,610 INFO: microblog startup [in ./__init__.py:41]
+2016-05-25 02:00:02,867 INFO: microblog startup [in ./__init__.py:42]
+2016-05-25 02:00:34,122 INFO: microblog startup [in ./__init__.py:45]
+2016-05-25 02:07:44,568 INFO: microblog startup [in ./__init__.py:45]
+2016-05-25 02:07:54,785 INFO: microblog startup [in ./__init__.py:45]
+2016-05-25 02:11:05,081 INFO: microblog startup [in ./__init__.py:45]
+2016-05-25 02:11:54,814 INFO: microblog startup [in ./__init__.py:45]
+2016-05-25 02:11:59,019 INFO: microblog startup [in ./__init__.py:45]
+2016-05-25 02:14:45,415 INFO: microblog startup [in ./__init__.py:45]
+2016-05-25 02:20:01,010 INFO: microblog startup [in __init__.py:45]
+2016-05-25 02:21:31,901 INFO: microblog startup [in ./__init__.py:45]
+2016-05-25 02:22:54,167 INFO: microblog startup [in ./__init__.py:45]
+2016-05-25 02:23:20,214 INFO: microblog startup [in ./__init__.py:45]
+2016-05-25 02:23:23,418 INFO: microblog startup [in ./__init__.py:45]
+2016-05-25 02:24:57,680 INFO: microblog startup [in ./__init__.py:45]
+2016-05-25 02:25:10,898 INFO: microblog startup [in ./__init__.py:45]
+2016-05-25 02:25:18,570 INFO: microblog startup [in ./__init__.py:45]
+2016-05-25 02:25:22,774 INFO: microblog startup [in ./__init__.py:45]
+2016-05-25 02:27:39,136 INFO: microblog startup [in ./__init__.py:45]
+2016-05-25 02:27:56,932 INFO: microblog startup [in ./__init__.py:45]
+2016-05-25 02:28:01,140 INFO: microblog startup [in ./__init__.py:45]
+2016-05-25 02:29:17,448 INFO: microblog startup [in ./__init__.py:45]
+2016-05-25 02:29:28,168 INFO: microblog startup [in ./__init__.py:45]
+2016-05-25 02:29:32,373 INFO: microblog startup [in ./__init__.py:45]
+2016-05-25 02:31:33,699 INFO: microblog startup [in ./__init__.py:45]
+2016-05-25 02:31:42,678 INFO: microblog startup [in ./__init__.py:45]
+2016-05-25 02:31:46,880 INFO: microblog startup [in ./__init__.py:45]
+2016-05-25 02:32:13,112 ERROR: Exception on /index/ [GET] [in /var/www/microblog/venv/local/lib/python2.7/site-packages/flask/app.py:1423]
+Traceback (most recent call last):
+  File "/var/www/microblog/venv/local/lib/python2.7/site-packages/flask/app.py", line 1817, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/var/www/microblog/venv/local/lib/python2.7/site-packages/flask/app.py", line 1477, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/var/www/microblog/venv/local/lib/python2.7/site-packages/flask/app.py", line 1381, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/var/www/microblog/venv/local/lib/python2.7/site-packages/flask/app.py", line 1473, in full_dispatch_request
+    rv = self.preprocess_request()
+  File "/var/www/microblog/venv/local/lib/python2.7/site-packages/flask/app.py", line 1666, in preprocess_request
+    rv = func()
+  File "./views.py", line 72, in before_request
+    g.user.last_seen = datetime.utcnow()
+AttributeError: 'module' object has no attribute 'utcnow'
+2016-05-25 02:33:36,211 INFO: microblog startup [in ./__init__.py:45]
+2016-05-25 02:33:38,332 ERROR: Exception on /user/aaaa/ [GET] [in /var/www/microblog/venv/local/lib/python2.7/site-packages/flask/app.py:1423]
+Traceback (most recent call last):
+  File "/var/www/microblog/venv/local/lib/python2.7/site-packages/flask/app.py", line 1817, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/var/www/microblog/venv/local/lib/python2.7/site-packages/flask/app.py", line 1477, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/var/www/microblog/venv/local/lib/python2.7/site-packages/flask/app.py", line 1381, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/var/www/microblog/venv/local/lib/python2.7/site-packages/flask/app.py", line 1473, in full_dispatch_request
+    rv = self.preprocess_request()
+  File "/var/www/microblog/venv/local/lib/python2.7/site-packages/flask/app.py", line 1666, in preprocess_request
+    rv = func()
+  File "./views.py", line 72, in before_request
+    g.user.last_seen = datetime.utcnow()
+AttributeError: 'module' object has no attribute 'utcnow'
+2016-05-25 02:33:40,723 ERROR: Exception on /index/ [GET] [in /var/www/microblog/venv/local/lib/python2.7/site-packages/flask/app.py:1423]
+Traceback (most recent call last):
+  File "/var/www/microblog/venv/local/lib/python2.7/site-packages/flask/app.py", line 1817, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/var/www/microblog/venv/local/lib/python2.7/site-packages/flask/app.py", line 1477, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/var/www/microblog/venv/local/lib/python2.7/site-packages/flask/app.py", line 1381, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/var/www/microblog/venv/local/lib/python2.7/site-packages/flask/app.py", line 1473, in full_dispatch_request
+    rv = self.preprocess_request()
+  File "/var/www/microblog/venv/local/lib/python2.7/site-packages/flask/app.py", line 1666, in preprocess_request
+    rv = func()
+  File "./views.py", line 72, in before_request
+    g.user.last_seen = datetime.utcnow()
+AttributeError: 'module' object has no attribute 'utcnow'
+2016-05-25 02:33:42,217 ERROR: Exception on /user/aaaa/ [GET] [in /var/www/microblog/venv/local/lib/python2.7/site-packages/flask/app.py:1423]
+Traceback (most recent call last):
+  File "/var/www/microblog/venv/local/lib/python2.7/site-packages/flask/app.py", line 1817, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/var/www/microblog/venv/local/lib/python2.7/site-packages/flask/app.py", line 1477, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/var/www/microblog/venv/local/lib/python2.7/site-packages/flask/app.py", line 1381, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/var/www/microblog/venv/local/lib/python2.7/site-packages/flask/app.py", line 1473, in full_dispatch_request
+    rv = self.preprocess_request()
+  File "/var/www/microblog/venv/local/lib/python2.7/site-packages/flask/app.py", line 1666, in preprocess_request
+    rv = func()
+  File "./views.py", line 72, in before_request
+    g.user.last_seen = datetime.utcnow()
+AttributeError: 'module' object has no attribute 'utcnow'
+2016-05-25 02:33:43,679 ERROR: Exception on /index/ [GET] [in /var/www/microblog/venv/local/lib/python2.7/site-packages/flask/app.py:1423]
+Traceback (most recent call last):
+  File "/var/www/microblog/venv/local/lib/python2.7/site-packages/flask/app.py", line 1817, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/var/www/microblog/venv/local/lib/python2.7/site-packages/flask/app.py", line 1477, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/var/www/microblog/venv/local/lib/python2.7/site-packages/flask/app.py", line 1381, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/var/www/microblog/venv/local/lib/python2.7/site-packages/flask/app.py", line 1473, in full_dispatch_request
+    rv = self.preprocess_request()
+  File "/var/www/microblog/venv/local/lib/python2.7/site-packages/flask/app.py", line 1666, in preprocess_request
+    rv = func()
+  File "./views.py", line 72, in before_request
+    g.user.last_seen = datetime.utcnow()
+AttributeError: 'module' object has no attribute 'utcnow'
+2016-05-25 02:33:45,452 ERROR: Exception on /user/aaaa/ [GET] [in /var/www/microblog/venv/local/lib/python2.7/site-packages/flask/app.py:1423]
+Traceback (most recent call last):
+  File "/var/www/microblog/venv/local/lib/python2.7/site-packages/flask/app.py", line 1817, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/var/www/microblog/venv/local/lib/python2.7/site-packages/flask/app.py", line 1477, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/var/www/microblog/venv/local/lib/python2.7/site-packages/flask/app.py", line 1381, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/var/www/microblog/venv/local/lib/python2.7/site-packages/flask/app.py", line 1473, in full_dispatch_request
+    rv = self.preprocess_request()
+  File "/var/www/microblog/venv/local/lib/python2.7/site-packages/flask/app.py", line 1666, in preprocess_request
+    rv = func()
+  File "./views.py", line 72, in before_request
+    g.user.last_seen = datetime.utcnow()
+AttributeError: 'module' object has no attribute 'utcnow'
+2016-05-25 02:33:47,618 ERROR: Exception on /index/ [GET] [in /var/www/microblog/venv/local/lib/python2.7/site-packages/flask/app.py:1423]
+Traceback (most recent call last):
+  File "/var/www/microblog/venv/local/lib/python2.7/site-packages/flask/app.py", line 1817, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/var/www/microblog/venv/local/lib/python2.7/site-packages/flask/app.py", line 1477, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/var/www/microblog/venv/local/lib/python2.7/site-packages/flask/app.py", line 1381, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/var/www/microblog/venv/local/lib/python2.7/site-packages/flask/app.py", line 1473, in full_dispatch_request
+    rv = self.preprocess_request()
+  File "/var/www/microblog/venv/local/lib/python2.7/site-packages/flask/app.py", line 1666, in preprocess_request
+    rv = func()
+  File "./views.py", line 72, in before_request
+    g.user.last_seen = datetime.utcnow()
+AttributeError: 'module' object has no attribute 'utcnow'
+2016-05-25 02:33:50,063 ERROR: Exception on /user/aaaa/ [GET] [in /var/www/microblog/venv/local/lib/python2.7/site-packages/flask/app.py:1423]
+Traceback (most recent call last):
+  File "/var/www/microblog/venv/local/lib/python2.7/site-packages/flask/app.py", line 1817, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/var/www/microblog/venv/local/lib/python2.7/site-packages/flask/app.py", line 1477, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/var/www/microblog/venv/local/lib/python2.7/site-packages/flask/app.py", line 1381, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/var/www/microblog/venv/local/lib/python2.7/site-packages/flask/app.py", line 1473, in full_dispatch_request
+    rv = self.preprocess_request()
+  File "/var/www/microblog/venv/local/lib/python2.7/site-packages/flask/app.py", line 1666, in preprocess_request
+    rv = func()
+  File "./views.py", line 72, in before_request
+    g.user.last_seen = datetime.utcnow()
+AttributeError: 'module' object has no attribute 'utcnow'
+2016-05-25 02:33:52,007 ERROR: Exception on /index/ [GET] [in /var/www/microblog/venv/local/lib/python2.7/site-packages/flask/app.py:1423]
+Traceback (most recent call last):
+  File "/var/www/microblog/venv/local/lib/python2.7/site-packages/flask/app.py", line 1817, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/var/www/microblog/venv/local/lib/python2.7/site-packages/flask/app.py", line 1477, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/var/www/microblog/venv/local/lib/python2.7/site-packages/flask/app.py", line 1381, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/var/www/microblog/venv/local/lib/python2.7/site-packages/flask/app.py", line 1473, in full_dispatch_request
+    rv = self.preprocess_request()
+  File "/var/www/microblog/venv/local/lib/python2.7/site-packages/flask/app.py", line 1666, in preprocess_request
+    rv = func()
+  File "./views.py", line 72, in before_request
+    g.user.last_seen = datetime.utcnow()
+AttributeError: 'module' object has no attribute 'utcnow'
+2016-05-25 02:34:58,539 INFO: microblog startup [in ./__init__.py:45]
+2016-05-25 02:35:44,783 INFO: microblog startup [in ./__init__.py:45]
+2016-05-25 02:36:46,037 INFO: microblog startup [in ./__init__.py:45]
+2016-05-25 02:36:51,401 INFO: microblog startup [in ./__init__.py:45]
+2016-05-25 02:36:56,083 INFO: microblog startup [in ./__init__.py:45]
+2016-05-25 02:46:36,582 INFO: microblog startup [in ./__init__.py:45]
+2016-05-25 02:46:41,638 INFO: microblog startup [in ./__init__.py:45]
+2016-05-25 02:46:45,838 INFO: microblog startup [in ./__init__.py:45]
+2016-05-25 02:47:26,127 INFO: microblog startup [in ./__init__.py:45]
+2016-05-25 02:48:03,365 INFO: microblog startup [in ./__init__.py:45]
+2016-05-25 02:48:08,793 INFO: microblog startup [in ./__init__.py:45]
+2016-05-25 02:48:12,997 INFO: microblog startup [in ./__init__.py:45]
+2016-05-25 02:48:56,288 INFO: microblog startup [in ./__init__.py:45]
+2016-05-25 02:49:10,501 INFO: microblog startup [in ./__init__.py:45]
+2016-05-25 02:49:14,701 INFO: microblog startup [in ./__init__.py:45]
+2016-05-25 02:50:34,020 INFO: microblog startup [in ./__init__.py:45]
+2016-05-25 02:50:41,234 INFO: microblog startup [in ./__init__.py:45]
+2016-05-25 02:50:51,462 INFO: microblog startup [in ./__init__.py:45]
+2016-05-25 02:50:58,802 INFO: microblog startup [in ./__init__.py:45]
+2016-05-25 02:51:03,008 INFO: microblog startup [in ./__init__.py:45]
+2016-05-25 02:51:49,239 INFO: microblog startup [in ./__init__.py:45]
+2016-05-25 02:52:26,549 INFO: microblog startup [in ./__init__.py:45]
+2016-05-25 02:52:45,412 INFO: microblog startup [in ./__init__.py:45]
+2016-05-25 02:52:49,622 INFO: microblog startup [in ./__init__.py:45]
+2016-05-25 02:53:38,853 INFO: microblog startup [in ./__init__.py:45]
+2016-05-25 02:53:43,505 INFO: microblog startup [in ./__init__.py:45]
+2016-05-25 02:53:47,711 INFO: microblog startup [in ./__init__.py:45]
+2016-05-25 02:54:46,029 INFO: microblog startup [in ./__init__.py:45]
+2016-05-25 02:54:48,535 INFO: microblog startup [in ./__init__.py:45]
+2016-05-25 02:54:52,728 INFO: microblog startup [in ./__init__.py:45]
+2016-05-25 02:56:42,055 INFO: microblog startup [in ./__init__.py:45]
+2016-05-25 02:56:55,284 INFO: microblog startup [in ./__init__.py:45]
+2016-05-25 02:57:17,514 INFO: microblog startup [in ./__init__.py:45]
+2016-05-25 02:57:25,627 INFO: microblog startup [in ./__init__.py:45]
+2016-05-25 02:57:29,842 INFO: microblog startup [in ./__init__.py:45]
+2016-05-25 02:57:31,881 INFO: microblog startup [in ./__init__.py:45]
+2016-05-25 02:57:36,083 INFO: microblog startup [in ./__init__.py:45]
+2016-05-25 02:58:28,331 INFO: microblog startup [in ./__init__.py:45]
+2016-05-25 02:58:38,947 INFO: microblog startup [in ./__init__.py:45]
+2016-05-25 02:58:43,152 INFO: microblog startup [in ./__init__.py:45]
+2016-05-25 02:59:20,377 INFO: microblog startup [in ./__init__.py:45]
+2016-05-25 03:00:21,622 INFO: microblog startup [in ./__init__.py:45]
+2016-05-25 03:00:26,277 INFO: microblog startup [in ./__init__.py:45]
+2016-05-25 03:00:29,481 INFO: microblog startup [in ./__init__.py:45]
+2016-05-25 03:01:18,706 INFO: microblog startup [in ./__init__.py:45]
+2016-05-25 03:01:49,946 INFO: microblog startup [in ./__init__.py:45]
+2016-05-25 03:04:33,244 INFO: microblog startup [in ./__init__.py:45]
+2016-05-25 03:04:43,497 INFO: microblog startup [in ./__init__.py:45]
+2016-05-25 03:04:50,622 INFO: microblog startup [in ./__init__.py:45]
+2016-05-25 03:04:54,830 INFO: microblog startup [in ./__init__.py:45]
+2016-05-25 03:06:32,141 INFO: microblog startup [in ./__init__.py:45]
+2016-05-25 03:07:06,458 INFO: microblog startup [in ./__init__.py:45]
+2016-05-25 03:07:55,767 INFO: microblog startup [in ./__init__.py:45]
+2016-05-25 03:10:03,129 INFO: microblog startup [in ./__init__.py:45]
+2016-05-25 03:27:49,747 INFO: microblog startup [in /var/www/microblog/__init__.py:45]
+2016-05-25 03:28:05,630 INFO: microblog startup [in ./__init__.py:45]
+2016-05-25 03:28:09,826 INFO: microblog startup [in ./__init__.py:45]
+2016-05-25 03:28:33,831 ERROR: Exception on /edit/ [GET] [in /var/www/microblog/venv/local/lib/python2.7/site-packages/flask/app.py:1423]
+Traceback (most recent call last):
+  File "/var/www/microblog/venv/local/lib/python2.7/site-packages/flask/app.py", line 1817, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/var/www/microblog/venv/local/lib/python2.7/site-packages/flask/app.py", line 1477, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/var/www/microblog/venv/local/lib/python2.7/site-packages/flask/app.py", line 1381, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/var/www/microblog/venv/local/lib/python2.7/site-packages/flask/app.py", line 1475, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/var/www/microblog/venv/local/lib/python2.7/site-packages/flask/app.py", line 1461, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/var/www/microblog/venv/local/lib/python2.7/site-packages/flask_login.py", line 792, in decorated_view
+    return func(*args, **kwargs)
+  File "./views.py", line 154, in edit
+    return render_template('edit.html', form=form)
+  File "/var/www/microblog/venv/local/lib/python2.7/site-packages/flask/templating.py", line 128, in render_template
+    context, ctx.app)
+  File "/var/www/microblog/venv/local/lib/python2.7/site-packages/flask/templating.py", line 110, in _render
+    rv = template.render(context)
+  File "/var/www/microblog/venv/local/lib/python2.7/site-packages/jinja2/environment.py", line 989, in render
+    return self.environment.handle_exception(exc_info, True)
+  File "/var/www/microblog/venv/local/lib/python2.7/site-packages/jinja2/environment.py", line 754, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/var/www/microblog/templates/edit.html", line 2, in top-level template code
+    {% extends "base.html" %}
+  File "/var/www/microblog/templates/base.html", line 32, in top-level template code
+    {% block content %}{% endblock %}
+  File "/var/www/microblog/templates/edit.html", line 12, in block "content"
+    {{ form.nickname(size=24) }}
+UndefinedError: 'forms.EditForm object' has no attribute 'nickname'
+2016-05-25 03:28:45,554 ERROR: Exception on /edit/ [GET] [in /var/www/microblog/venv/local/lib/python2.7/site-packages/flask/app.py:1423]
+Traceback (most recent call last):
+  File "/var/www/microblog/venv/local/lib/python2.7/site-packages/flask/app.py", line 1817, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/var/www/microblog/venv/local/lib/python2.7/site-packages/flask/app.py", line 1477, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/var/www/microblog/venv/local/lib/python2.7/site-packages/flask/app.py", line 1381, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/var/www/microblog/venv/local/lib/python2.7/site-packages/flask/app.py", line 1475, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/var/www/microblog/venv/local/lib/python2.7/site-packages/flask/app.py", line 1461, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/var/www/microblog/venv/local/lib/python2.7/site-packages/flask_login.py", line 792, in decorated_view
+    return func(*args, **kwargs)
+  File "./views.py", line 154, in edit
+    return render_template('edit.html', form=form)
+  File "/var/www/microblog/venv/local/lib/python2.7/site-packages/flask/templating.py", line 128, in render_template
+    context, ctx.app)
+  File "/var/www/microblog/venv/local/lib/python2.7/site-packages/flask/templating.py", line 110, in _render
+    rv = template.render(context)
+  File "/var/www/microblog/venv/local/lib/python2.7/site-packages/jinja2/environment.py", line 989, in render
+    return self.environment.handle_exception(exc_info, True)
+  File "/var/www/microblog/venv/local/lib/python2.7/site-packages/jinja2/environment.py", line 754, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/var/www/microblog/templates/edit.html", line 2, in top-level template code
+    {% extends "base.html" %}
+  File "/var/www/microblog/templates/base.html", line 32, in top-level template code
+    {% block content %}{% endblock %}
+  File "/var/www/microblog/templates/edit.html", line 12, in block "content"
+    {{ form.nickname(size=24) }}
+UndefinedError: 'forms.EditForm object' has no attribute 'nickname'
+2016-05-25 03:29:56,055 ERROR: Exception on /edit/ [GET] [in /var/www/microblog/venv/local/lib/python2.7/site-packages/flask/app.py:1423]
+Traceback (most recent call last):
+  File "/var/www/microblog/venv/local/lib/python2.7/site-packages/flask/app.py", line 1817, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/var/www/microblog/venv/local/lib/python2.7/site-packages/flask/app.py", line 1477, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/var/www/microblog/venv/local/lib/python2.7/site-packages/flask/app.py", line 1381, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/var/www/microblog/venv/local/lib/python2.7/site-packages/flask/app.py", line 1475, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/var/www/microblog/venv/local/lib/python2.7/site-packages/flask/app.py", line 1461, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/var/www/microblog/venv/local/lib/python2.7/site-packages/flask_login.py", line 792, in decorated_view
+    return func(*args, **kwargs)
+  File "./views.py", line 154, in edit
+    return render_template('edit.html', form=form)
+  File "/var/www/microblog/venv/local/lib/python2.7/site-packages/flask/templating.py", line 128, in render_template
+    context, ctx.app)
+  File "/var/www/microblog/venv/local/lib/python2.7/site-packages/flask/templating.py", line 110, in _render
+    rv = template.render(context)
+  File "/var/www/microblog/venv/local/lib/python2.7/site-packages/jinja2/environment.py", line 989, in render
+    return self.environment.handle_exception(exc_info, True)
+  File "/var/www/microblog/venv/local/lib/python2.7/site-packages/jinja2/environment.py", line 754, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/var/www/microblog/templates/edit.html", line 2, in top-level template code
+    {% extends "base.html" %}
+  File "/var/www/microblog/templates/base.html", line 32, in top-level template code
+    {% block content %}{% endblock %}
+  File "/var/www/microblog/templates/edit.html", line 12, in block "content"
+    {{ form.nickname(size=24) }}
+UndefinedError: 'forms.EditForm object' has no attribute 'nickname'
+2016-05-25 04:05:09,504 INFO: microblog startup [in /var/www/microblog/__init__.py:45]
+2016-05-25 04:05:54,866 INFO: microblog startup [in /var/www/microblog/__init__.py:45]
+2016-05-25 05:26:17,651 INFO: microblog startup [in ./__init__.py:45]
+2016-05-25 05:26:45,402 INFO: microblog startup [in /var/www/microblog/__init__.py:45]
+2016-05-25 05:39:58,227 INFO: microblog startup [in ./__init__.py:45]
+2016-05-25 06:20:48,303 INFO: microblog startup [in /var/www/microblog/__init__.py:45]
+2016-05-25 07:10:23,337 INFO: microblog startup [in /var/www/microblog/__init__.py:45]
+2016-05-25 07:10:56,626 INFO: microblog startup [in /var/www/microblog/__init__.py:45]
+2016-05-25 08:17:37,944 INFO: microblog startup [in /var/www/microblog/__init__.py:45]
+2016-05-25 08:33:36,488 INFO: microblog startup [in /var/www/microblog/__init__.py:45]
+2016-05-25 08:34:10,997 INFO: microblog startup [in ./__init__.py:45]
+2016-05-25 08:34:15,209 INFO: microblog startup [in ./__init__.py:45]
+2016-05-25 08:50:07,258 INFO: microblog startup [in ./__init__.py:45]
+2016-05-25 08:50:10,452 INFO: microblog startup [in ./__init__.py:45]
+2016-05-25 08:51:38,795 INFO: microblog startup [in ./__init__.py:45]
+2016-05-25 08:51:53,065 INFO: microblog startup [in ./__init__.py:45]
+2016-05-25 08:51:57,272 INFO: microblog startup [in ./__init__.py:45]
+2016-05-25 09:10:47,098 INFO: microblog startup [in ./__init__.py:45]
+2016-05-25 09:14:21,422 INFO: microblog startup [in ./__init__.py:45]
+2016-05-25 09:14:55,661 INFO: microblog startup [in ./__init__.py:45]
+2016-05-25 09:15:44,913 INFO: microblog startup [in ./__init__.py:45]
+2016-05-25 09:21:28,298 INFO: microblog startup [in ./__init__.py:45]
+2016-05-25 09:23:02,924 INFO: microblog startup [in ./__init__.py:45]
+2016-05-25 09:23:07,120 INFO: microblog startup [in ./__init__.py:45]
+2016-05-25 09:23:30,956 ERROR: Exception on /index/ [GET] [in /var/www/microblog/venv/local/lib/python2.7/site-packages/flask/app.py:1423]
+Traceback (most recent call last):
+  File "/var/www/microblog/venv/local/lib/python2.7/site-packages/flask/app.py", line 1817, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/var/www/microblog/venv/local/lib/python2.7/site-packages/flask/app.py", line 1477, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/var/www/microblog/venv/local/lib/python2.7/site-packages/flask/app.py", line 1381, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/var/www/microblog/venv/local/lib/python2.7/site-packages/flask/app.py", line 1475, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/var/www/microblog/venv/local/lib/python2.7/site-packages/flask/app.py", line 1461, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/var/www/microblog/venv/local/lib/python2.7/site-packages/flask_login.py", line 792, in decorated_view
+    return func(*args, **kwargs)
+  File "./views.py", line 33, in index
+    return render_template('index.html',title='Home',form=form,posts=posts)
+UnboundLocalError: local variable 'posts' referenced before assignment
+2016-05-25 09:23:38,940 ERROR: Exception on /index/ [GET] [in /var/www/microblog/venv/local/lib/python2.7/site-packages/flask/app.py:1423]
+Traceback (most recent call last):
+  File "/var/www/microblog/venv/local/lib/python2.7/site-packages/flask/app.py", line 1817, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/var/www/microblog/venv/local/lib/python2.7/site-packages/flask/app.py", line 1477, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/var/www/microblog/venv/local/lib/python2.7/site-packages/flask/app.py", line 1381, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/var/www/microblog/venv/local/lib/python2.7/site-packages/flask/app.py", line 1475, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/var/www/microblog/venv/local/lib/python2.7/site-packages/flask/app.py", line 1461, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/var/www/microblog/venv/local/lib/python2.7/site-packages/flask_login.py", line 792, in decorated_view
+    return func(*args, **kwargs)
+  File "./views.py", line 33, in index
+    return render_template('index.html',title='Home',form=form,posts=posts)
+UnboundLocalError: local variable 'posts' referenced before assignment
+2016-05-25 09:25:02,439 INFO: microblog startup [in ./__init__.py:45]
+2016-05-25 09:25:14,486 INFO: microblog startup [in ./__init__.py:45]
+2016-05-25 09:25:19,039 INFO: microblog startup [in ./__init__.py:45]
+2016-05-25 09:28:14,415 INFO: microblog startup [in ./__init__.py:45]
+2016-05-25 09:28:45,405 INFO: microblog startup [in /var/www/microblog/__init__.py:45]
+2016-05-25 09:28:55,974 INFO: microblog startup [in ./__init__.py:45]
+2016-05-25 09:29:00,174 INFO: microblog startup [in ./__init__.py:45]
+2016-05-25 09:30:46,467 INFO: microblog startup [in ./__init__.py:45]
+2016-05-25 09:30:52,770 INFO: microblog startup [in ./__init__.py:45]
+2016-05-25 09:30:56,965 INFO: microblog startup [in ./__init__.py:45]
+2016-05-25 09:33:28,322 INFO: microblog startup [in ./__init__.py:45]
+2016-05-25 09:33:36,358 INFO: microblog startup [in ./__init__.py:45]
+2016-05-25 09:33:39,599 INFO: microblog startup [in ./__init__.py:45]
+2016-05-25 09:35:07,942 INFO: microblog startup [in ./__init__.py:45]
+2016-05-25 09:35:18,232 INFO: microblog startup [in ./__init__.py:45]
+2016-05-25 09:35:21,378 INFO: microblog startup [in ./__init__.py:45]
+2016-05-25 09:39:16,764 INFO: microblog startup [in ./__init__.py:45]
+2016-05-25 09:39:26,990 INFO: microblog startup [in ./__init__.py:45]
+2016-05-25 09:46:28,469 INFO: microblog startup [in ./__init__.py:45]
+2016-05-25 09:49:20,770 INFO: microblog startup [in ./__init__.py:45]
+2016-05-25 09:49:34,002 INFO: microblog startup [in ./__init__.py:45]
+2016-05-25 09:50:12,942 ERROR: Exception on /index/ [GET] [in /var/www/microblog/venv/local/lib/python2.7/site-packages/flask/app.py:1423]
+Traceback (most recent call last):
+  File "/var/www/microblog/venv/local/lib/python2.7/site-packages/flask/app.py", line 1817, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/var/www/microblog/venv/local/lib/python2.7/site-packages/flask/app.py", line 1477, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/var/www/microblog/venv/local/lib/python2.7/site-packages/flask/app.py", line 1381, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/var/www/microblog/venv/local/lib/python2.7/site-packages/flask/app.py", line 1475, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/var/www/microblog/venv/local/lib/python2.7/site-packages/flask/app.py", line 1461, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/var/www/microblog/venv/local/lib/python2.7/site-packages/flask_login.py", line 792, in decorated_view
+    return func(*args, **kwargs)
+  File "./views.py", line 32, in index
+    posts = g.user.followed_posts().paginate(page, POSTS_PER_PAGE, False).items
+NameError: global name 'POSTS_PER_PAGE' is not defined
+2016-05-25 09:50:17,539 ERROR: Exception on /index/ [GET] [in /var/www/microblog/venv/local/lib/python2.7/site-packages/flask/app.py:1423]
+Traceback (most recent call last):
+  File "/var/www/microblog/venv/local/lib/python2.7/site-packages/flask/app.py", line 1817, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/var/www/microblog/venv/local/lib/python2.7/site-packages/flask/app.py", line 1477, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/var/www/microblog/venv/local/lib/python2.7/site-packages/flask/app.py", line 1381, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/var/www/microblog/venv/local/lib/python2.7/site-packages/flask/app.py", line 1475, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/var/www/microblog/venv/local/lib/python2.7/site-packages/flask/app.py", line 1461, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/var/www/microblog/venv/local/lib/python2.7/site-packages/flask_login.py", line 792, in decorated_view
+    return func(*args, **kwargs)
+  File "./views.py", line 32, in index
+    posts = g.user.followed_posts().paginate(page, POSTS_PER_PAGE, False).items
+NameError: global name 'POSTS_PER_PAGE' is not defined
+2016-05-25 09:54:49,301 INFO: microblog startup [in /var/www/microblog/__init__.py:45]
+2016-05-25 09:55:11,321 INFO: microblog startup [in ./__init__.py:45]
+2016-05-25 09:55:14,377 INFO: microblog startup [in ./__init__.py:45]
+2016-05-25 09:55:23,826 ERROR: Exception on /index/ [GET] [in /var/www/microblog/venv/local/lib/python2.7/site-packages/flask/app.py:1423]
+Traceback (most recent call last):
+  File "/var/www/microblog/venv/local/lib/python2.7/site-packages/flask/app.py", line 1817, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/var/www/microblog/venv/local/lib/python2.7/site-packages/flask/app.py", line 1477, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/var/www/microblog/venv/local/lib/python2.7/site-packages/flask/app.py", line 1381, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/var/www/microblog/venv/local/lib/python2.7/site-packages/flask/app.py", line 1475, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/var/www/microblog/venv/local/lib/python2.7/site-packages/flask/app.py", line 1461, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/var/www/microblog/venv/local/lib/python2.7/site-packages/flask_login.py", line 792, in decorated_view
+    return func(*args, **kwargs)
+  File "./views.py", line 32, in index
+    posts = g.user.followed_posts().paginate(page, POSTS_PER_PAGE, False).items
+NameError: global name 'POSTS_PER_PAGE' is not defined
+2016-05-25 09:55:26,765 ERROR: Exception on /index/ [GET] [in /var/www/microblog/venv/local/lib/python2.7/site-packages/flask/app.py:1423]
+Traceback (most recent call last):
+  File "/var/www/microblog/venv/local/lib/python2.7/site-packages/flask/app.py", line 1817, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/var/www/microblog/venv/local/lib/python2.7/site-packages/flask/app.py", line 1477, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/var/www/microblog/venv/local/lib/python2.7/site-packages/flask/app.py", line 1381, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/var/www/microblog/venv/local/lib/python2.7/site-packages/flask/app.py", line 1475, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/var/www/microblog/venv/local/lib/python2.7/site-packages/flask/app.py", line 1461, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/var/www/microblog/venv/local/lib/python2.7/site-packages/flask_login.py", line 792, in decorated_view
+    return func(*args, **kwargs)
+  File "./views.py", line 32, in index
+    posts = g.user.followed_posts().paginate(page, POSTS_PER_PAGE, False).items
+NameError: global name 'POSTS_PER_PAGE' is not defined
+2016-05-25 09:55:31,518 ERROR: Exception on /index/ [GET] [in /var/www/microblog/venv/local/lib/python2.7/site-packages/flask/app.py:1423]
+Traceback (most recent call last):
+  File "/var/www/microblog/venv/local/lib/python2.7/site-packages/flask/app.py", line 1817, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/var/www/microblog/venv/local/lib/python2.7/site-packages/flask/app.py", line 1477, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/var/www/microblog/venv/local/lib/python2.7/site-packages/flask/app.py", line 1381, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/var/www/microblog/venv/local/lib/python2.7/site-packages/flask/app.py", line 1475, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/var/www/microblog/venv/local/lib/python2.7/site-packages/flask/app.py", line 1461, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/var/www/microblog/venv/local/lib/python2.7/site-packages/flask_login.py", line 792, in decorated_view
+    return func(*args, **kwargs)
+  File "./views.py", line 32, in index
+    posts = g.user.followed_posts().paginate(page, POSTS_PER_PAGE, False).items
+NameError: global name 'POSTS_PER_PAGE' is not defined
+2016-05-25 09:55:44,225 ERROR: Exception on /index/ [GET] [in /var/www/microblog/venv/local/lib/python2.7/site-packages/flask/app.py:1423]
+Traceback (most recent call last):
+  File "/var/www/microblog/venv/local/lib/python2.7/site-packages/flask/app.py", line 1817, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/var/www/microblog/venv/local/lib/python2.7/site-packages/flask/app.py", line 1477, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/var/www/microblog/venv/local/lib/python2.7/site-packages/flask/app.py", line 1381, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/var/www/microblog/venv/local/lib/python2.7/site-packages/flask/app.py", line 1475, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/var/www/microblog/venv/local/lib/python2.7/site-packages/flask/app.py", line 1461, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/var/www/microblog/venv/local/lib/python2.7/site-packages/flask_login.py", line 792, in decorated_view
+    return func(*args, **kwargs)
+  File "./views.py", line 32, in index
+    posts = g.user.followed_posts().paginate(page, POSTS_PER_PAGE, False).items
+NameError: global name 'POSTS_PER_PAGE' is not defined
+2016-05-25 09:55:59,175 ERROR: Exception on /index/1 [GET] [in /var/www/microblog/venv/local/lib/python2.7/site-packages/flask/app.py:1423]
+Traceback (most recent call last):
+  File "/var/www/microblog/venv/local/lib/python2.7/site-packages/flask/app.py", line 1817, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/var/www/microblog/venv/local/lib/python2.7/site-packages/flask/app.py", line 1477, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/var/www/microblog/venv/local/lib/python2.7/site-packages/flask/app.py", line 1381, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/var/www/microblog/venv/local/lib/python2.7/site-packages/flask/app.py", line 1475, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/var/www/microblog/venv/local/lib/python2.7/site-packages/flask/app.py", line 1461, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/var/www/microblog/venv/local/lib/python2.7/site-packages/flask_login.py", line 792, in decorated_view
+    return func(*args, **kwargs)
+  File "./views.py", line 32, in index
+    posts = g.user.followed_posts().paginate(page, POSTS_PER_PAGE, False).items
+NameError: global name 'POSTS_PER_PAGE' is not defined
+2016-05-25 09:56:06,133 ERROR: Exception on /index/2 [GET] [in /var/www/microblog/venv/local/lib/python2.7/site-packages/flask/app.py:1423]
+Traceback (most recent call last):
+  File "/var/www/microblog/venv/local/lib/python2.7/site-packages/flask/app.py", line 1817, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/var/www/microblog/venv/local/lib/python2.7/site-packages/flask/app.py", line 1477, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/var/www/microblog/venv/local/lib/python2.7/site-packages/flask/app.py", line 1381, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/var/www/microblog/venv/local/lib/python2.7/site-packages/flask/app.py", line 1475, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/var/www/microblog/venv/local/lib/python2.7/site-packages/flask/app.py", line 1461, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/var/www/microblog/venv/local/lib/python2.7/site-packages/flask_login.py", line 792, in decorated_view
+    return func(*args, **kwargs)
+  File "./views.py", line 32, in index
+    posts = g.user.followed_posts().paginate(page, POSTS_PER_PAGE, False).items
+NameError: global name 'POSTS_PER_PAGE' is not defined
+2016-05-25 09:57:59,652 INFO: microblog startup [in ./__init__.py:45]
+2016-05-25 09:58:03,848 INFO: microblog startup [in ./__init__.py:45]
+2016-05-25 09:59:29,159 INFO: microblog startup [in ./__init__.py:45]
+2016-05-25 09:59:45,454 INFO: microblog startup [in ./__init__.py:45]
+2016-05-25 09:59:48,654 INFO: microblog startup [in ./__init__.py:45]
+2016-05-25 10:29:38,767 INFO: microblog startup [in ./__init__.py:45]
+2016-05-25 10:34:30,756 INFO: microblog startup [in ./__init__.py:45]
+2016-05-25 10:34:34,948 INFO: microblog startup [in ./__init__.py:45]
+2016-05-25 10:45:57,559 INFO: microblog startup [in ./__init__.py:45]
+2016-05-25 10:46:25,807 INFO: microblog startup [in ./__init__.py:45]
+2016-05-25 10:46:33,029 INFO: microblog startup [in ./__init__.py:45]
+2016-05-25 10:47:13,274 INFO: microblog startup [in ./__init__.py:45]
+2016-05-25 11:20:36,546 INFO: microblog startup [in ./__init__.py:45]
+2016-05-25 11:30:34,914 INFO: microblog startup [in /var/www/microblog/__init__.py:45]
+2016-05-25 11:31:56,052 INFO: microblog startup [in /var/www/microblog/__init__.py:45]
+2016-05-25 11:32:40,573 INFO: microblog startup [in /var/www/microblog/__init__.py:45]
+2016-05-25 11:39:01,247 INFO: microblog startup [in __init__.py:45]
+2016-05-25 11:39:59,316 INFO: microblog startup [in __init__.py:45]
+2016-05-25 11:44:00,436 INFO: microblog startup [in /var/www/microblog/__init__.py:45]
+2016-05-25 11:44:40,829 INFO: microblog startup [in ./__init__.py:45]
+2016-05-25 11:44:44,971 INFO: microblog startup [in ./__init__.py:45]
+2016-05-25 11:47:55,543 INFO: microblog startup [in __init__.py:45]
+2016-05-25 11:53:37,642 INFO: microblog startup [in ./__init__.py:45]
+2016-05-25 11:54:05,935 INFO: microblog startup [in ./__init__.py:45]
+2016-05-25 11:55:37,259 INFO: microblog startup [in ./__init__.py:45]
+2016-05-25 11:56:08,575 INFO: microblog startup [in ./__init__.py:45]
+2016-05-25 12:01:28,041 INFO: microblog startup [in ./__init__.py:45]
+2016-05-25 12:03:50,413 INFO: microblog startup [in ./__init__.py:45]
+2016-05-25 12:07:07,674 INFO: microblog startup [in ./__init__.py:45]
+2016-05-25 12:07:11,925 INFO: microblog startup [in ./__init__.py:45]
+2016-05-25 12:07:39,403 ERROR: Exception on /search_results/i am [GET] [in /var/www/microblog/venv/local/lib/python2.7/site-packages/flask/app.py:1423]
+Traceback (most recent call last):
+  File "/var/www/microblog/venv/local/lib/python2.7/site-packages/flask/app.py", line 1817, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/var/www/microblog/venv/local/lib/python2.7/site-packages/flask/app.py", line 1477, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/var/www/microblog/venv/local/lib/python2.7/site-packages/flask/app.py", line 1381, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/var/www/microblog/venv/local/lib/python2.7/site-packages/flask/app.py", line 1475, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/var/www/microblog/venv/local/lib/python2.7/site-packages/flask/app.py", line 1461, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/var/www/microblog/venv/local/lib/python2.7/site-packages/flask_login.py", line 792, in decorated_view
+    return func(*args, **kwargs)
+  File "./views.py", line 218, in search_results
+    return render_template('search_results.html',query=query,results=results)
+  File "/var/www/microblog/venv/local/lib/python2.7/site-packages/flask/templating.py", line 127, in render_template
+    return _render(ctx.app.jinja_env.get_or_select_template(template_name_or_list),
+  File "/var/www/microblog/venv/local/lib/python2.7/site-packages/jinja2/environment.py", line 851, in get_or_select_template
+    return self.get_template(template_name_or_list, parent, globals)
+  File "/var/www/microblog/venv/local/lib/python2.7/site-packages/jinja2/environment.py", line 812, in get_template
+    return self._load_template(name, self.make_globals(globals))
+  File "/var/www/microblog/venv/local/lib/python2.7/site-packages/jinja2/environment.py", line 774, in _load_template
+    cache_key = self.loader.get_source(self, name)[1]
+  File "/var/www/microblog/venv/local/lib/python2.7/site-packages/flask/templating.py", line 64, in get_source
+    raise TemplateNotFound(template)
+TemplateNotFound: search_results.html
+2016-05-25 12:07:58,898 ERROR: Exception on /search_results/as [GET] [in /var/www/microblog/venv/local/lib/python2.7/site-packages/flask/app.py:1423]
+Traceback (most recent call last):
+  File "/var/www/microblog/venv/local/lib/python2.7/site-packages/flask/app.py", line 1817, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/var/www/microblog/venv/local/lib/python2.7/site-packages/flask/app.py", line 1477, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/var/www/microblog/venv/local/lib/python2.7/site-packages/flask/app.py", line 1381, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/var/www/microblog/venv/local/lib/python2.7/site-packages/flask/app.py", line 1475, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/var/www/microblog/venv/local/lib/python2.7/site-packages/flask/app.py", line 1461, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/var/www/microblog/venv/local/lib/python2.7/site-packages/flask_login.py", line 792, in decorated_view
+    return func(*args, **kwargs)
+  File "./views.py", line 218, in search_results
+    return render_template('search_results.html',query=query,results=results)
+  File "/var/www/microblog/venv/local/lib/python2.7/site-packages/flask/templating.py", line 127, in render_template
+    return _render(ctx.app.jinja_env.get_or_select_template(template_name_or_list),
+  File "/var/www/microblog/venv/local/lib/python2.7/site-packages/jinja2/environment.py", line 851, in get_or_select_template
+    return self.get_template(template_name_or_list, parent, globals)
+  File "/var/www/microblog/venv/local/lib/python2.7/site-packages/jinja2/environment.py", line 812, in get_template
+    return self._load_template(name, self.make_globals(globals))
+  File "/var/www/microblog/venv/local/lib/python2.7/site-packages/jinja2/environment.py", line 774, in _load_template
+    cache_key = self.loader.get_source(self, name)[1]
+  File "/var/www/microblog/venv/local/lib/python2.7/site-packages/flask/templating.py", line 64, in get_source
+    raise TemplateNotFound(template)
+TemplateNotFound: search_results.html
+2016-05-25 12:09:31,370 INFO: microblog startup [in ./__init__.py:45]
+2016-05-25 12:10:02,820 INFO: microblog startup [in ./__init__.py:45]
+2016-05-25 12:10:07,065 INFO: microblog startup [in ./__init__.py:45]
+2016-05-25 12:13:43,101 INFO: microblog startup [in /var/www/microblog/__init__.py:45]
+2016-05-25 12:13:58,541 INFO: microblog startup [in ./__init__.py:45]
+2016-05-25 12:14:02,667 INFO: microblog startup [in ./__init__.py:45]
+2016-05-25 12:20:25,267 INFO: microblog startup [in ./__init__.py:45]
+2016-05-25 12:20:47,558 INFO: microblog startup [in ./__init__.py:45]
+2016-05-25 22:37:16,787 INFO: microblog startup [in ./__init__.py:45]
+2016-05-25 22:38:48,107 INFO: microblog startup [in ./__init__.py:45]
+2016-05-25 22:39:25,408 INFO: microblog startup [in ./__init__.py:45]
+2016-05-25 22:42:08,778 INFO: microblog startup [in ./__init__.py:45]
+2016-05-25 22:43:01,086 INFO: microblog startup [in ./__init__.py:45]
+2016-05-25 22:47:39,647 INFO: microblog startup [in __init__.py:48]
+2016-05-25 22:58:30,661 INFO: microblog startup [in __init__.py:48]
+2016-05-25 22:59:50,325 INFO: microblog startup [in ./__init__.py:48]
+2016-05-25 22:59:53,578 INFO: microblog startup [in ./__init__.py:48]
+2016-05-25 23:00:12,113 INFO: microblog startup [in __init__.py:48]
+2016-05-25 23:00:45,868 INFO: microblog startup [in ./__init__.py:48]
+2016-05-25 23:00:57,190 INFO: microblog startup [in __init__.py:48]
+2016-05-25 23:03:02,208 INFO: microblog startup [in ./__init__.py:48]
+2016-05-25 23:03:23,266 INFO: microblog startup [in ./__init__.py:48]
+2016-05-25 23:03:26,522 INFO: microblog startup [in ./__init__.py:48]
+2016-05-25 23:03:43,809 INFO: microblog startup [in __init__.py:48]
+2016-05-25 23:18:40,326 INFO: microblog startup [in ./__init__.py:48]
+2016-05-25 23:19:14,350 INFO: microblog startup [in __init__.py:48]
+2016-05-25 23:20:02,631 INFO: microblog startup [in ./__init__.py:48]
+2016-05-25 23:20:21,461 INFO: microblog startup [in __init__.py:48]
+2016-05-25 23:22:21,987 INFO: microblog startup [in ./__init__.py:48]
+2016-05-25 23:22:44,584 INFO: microblog startup [in __init__.py:48]
+2016-05-26 05:08:36,413 INFO: microblog startup [in ./__init__.py:48]
+2016-05-26 11:30:28,738 INFO: microblog startup [in ./__init__.py:48]
+2016-05-26 11:31:14,577 INFO: microblog startup [in __init__.py:48]
+2016-05-26 11:31:45,045 INFO: microblog startup [in ./__init__.py:48]
+2016-05-26 11:32:04,208 INFO: microblog startup [in __init__.py:48]
+2016-05-26 11:37:49,505 INFO: microblog startup [in ./__init__.py:48]
+2016-05-26 11:38:24,594 INFO: microblog startup [in __init__.py:48]
+2016-05-26 11:40:14,851 INFO: microblog startup [in ./__init__.py:48]
+2016-05-26 11:40:27,472 INFO: microblog startup [in __init__.py:48]
+2016-05-26 11:40:52,130 INFO: microblog startup [in ./__init__.py:48]
+2016-05-26 11:41:08,172 INFO: microblog startup [in __init__.py:48]
+2016-05-26 11:42:20,450 INFO: microblog startup [in ./__init__.py:48]
+2016-05-26 11:42:36,719 INFO: microblog startup [in ./__init__.py:48]
+2016-05-26 11:45:15,755 INFO: microblog startup [in __init__.py:48]
+2016-05-26 11:45:47,094 INFO: microblog startup [in ./__init__.py:48]
+2016-05-26 11:50:36,520 INFO: microblog startup [in ./__init__.py:48]
+2016-05-26 11:50:43,785 INFO: microblog startup [in ./__init__.py:48]
+2016-05-26 11:52:51,120 INFO: microblog startup [in ./__init__.py:48]
+2016-05-26 11:53:49,421 INFO: microblog startup [in ./__init__.py:48]
+2016-05-26 11:54:11,796 INFO: microblog startup [in __init__.py:48]
+2016-05-26 11:54:44,712 INFO: microblog startup [in ./__init__.py:48]
+2016-05-26 11:54:59,403 INFO: microblog startup [in __init__.py:48]
+2016-05-26 11:55:37,013 INFO: microblog startup [in ./__init__.py:48]
+2016-05-26 11:55:50,285 INFO: microblog startup [in ./__init__.py:48]
+2016-05-26 11:57:54,631 INFO: microblog startup [in ./__init__.py:48]
+2016-05-26 11:58:14,629 INFO: microblog startup [in __init__.py:48]
+2016-05-26 12:06:14,223 INFO: microblog startup [in ./__init__.py:48]
+2016-05-26 12:07:00,970 INFO: microblog startup [in __init__.py:48]
+2016-05-26 12:08:18,558 INFO: microblog startup [in ./__init__.py:48]
+2016-05-26 12:15:53,090 INFO: microblog startup [in ./__init__.py:48]
+2016-05-26 12:17:40,482 INFO: microblog startup [in __init__.py:48]
+2016-05-26 12:20:09,492 INFO: microblog startup [in ./__init__.py:48]
+2016-05-26 12:20:52,780 INFO: microblog startup [in ./__init__.py:48]
+2016-05-26 12:28:12,317 INFO: microblog startup [in ./__init__.py:48]
+2016-05-26 12:33:52,766 INFO: microblog startup [in ./__init__.py:48]
+2016-05-26 12:34:41,205 INFO: microblog startup [in __init__.py:48]
+2016-05-26 12:35:09,069 INFO: microblog startup [in ./__init__.py:48]
+2016-05-26 12:35:18,817 INFO: microblog startup [in __init__.py:48]
+2016-05-26 12:35:43,367 INFO: microblog startup [in ./__init__.py:48]
+2016-05-26 12:35:50,004 INFO: microblog startup [in __init__.py:48]
+2016-05-26 12:49:59,332 INFO: microblog startup [in /var/www/microblog/__init__.py:48]
+2016-05-26 12:50:29,236 INFO: microblog startup [in ./__init__.py:48]
+2016-05-26 12:50:32,482 INFO: microblog startup [in ./__init__.py:48]
+2016-05-26 12:51:24,385 ERROR: Exception on /follow/aaaa/ [GET] [in /var/www/microblog/venv/local/lib/python2.7/site-packages/flask/app.py:1423]
+Traceback (most recent call last):
+  File "/var/www/microblog/venv/local/lib/python2.7/site-packages/flask/app.py", line 1817, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/var/www/microblog/venv/local/lib/python2.7/site-packages/flask/app.py", line 1477, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/var/www/microblog/venv/local/lib/python2.7/site-packages/flask/app.py", line 1381, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/var/www/microblog/venv/local/lib/python2.7/site-packages/flask/app.py", line 1475, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/var/www/microblog/venv/local/lib/python2.7/site-packages/flask/app.py", line 1461, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/var/www/microblog/venv/local/lib/python2.7/site-packages/flask_login.py", line 792, in decorated_view
+    return func(*args, **kwargs)
+  File "./views.py", line 170, in follow
+    follower_notification(user, g.user)
+  File "./emails.py", line 21, in follower_notification
+    user=followed, follower=follower))
+  File "./emails.py", line 10, in send_email
+    mail.send(msg)
+  File "/var/www/microblog/venv/local/lib/python2.7/site-packages/flask_mail.py", line 492, in send
+    message.send(connection)
+  File "/var/www/microblog/venv/local/lib/python2.7/site-packages/flask_mail.py", line 427, in send
+    connection.send(self)
+  File "/var/www/microblog/venv/local/lib/python2.7/site-packages/flask_mail.py", line 192, in send
+    message.rcpt_options)
+  File "/usr/lib/python2.7/smtplib.py", line 731, in sendmail
+    raise SMTPSenderRefused(code, resp, from_addr)
+SMTPSenderRefused: (553, 'authentication is required,163 smtp1,C9GowADnXMld8UZXQVrfBA--.1987S3 1464267103', u'goodtre@163.com')
+2016-05-26 12:52:36,912 INFO: microblog startup [in ./__init__.py:48]
+2016-05-26 12:52:39,523 INFO: microblog startup [in /var/www/microblog/__init__.py:48]
+2016-05-26 12:52:45,090 INFO: microblog startup [in ./__init__.py:48]
+2016-05-26 12:52:48,974 INFO: microblog startup [in ./__init__.py:48]
+2016-05-26 12:54:29,389 INFO: microblog startup [in ./__init__.py:48]
+2016-05-26 12:54:34,200 INFO: microblog startup [in ./__init__.py:48]
+2016-05-26 12:54:37,458 INFO: microblog startup [in ./__init__.py:48]
+2016-05-26 12:57:08,905 INFO: microblog startup [in ./__init__.py:48]
+2016-05-26 13:04:32,777 INFO: microblog startup [in ./__init__.py:48]
+2016-05-26 13:04:37,047 INFO: microblog startup [in ./__init__.py:48]
+2016-05-26 13:05:47,445 INFO: microblog startup [in ./__init__.py:48]
+2016-05-26 13:08:33,900 INFO: microblog startup [in ./__init__.py:48]
+2016-05-26 13:08:46,132 INFO: microblog startup [in ./__init__.py:48]
+2016-05-26 13:08:50,400 INFO: microblog startup [in ./__init__.py:48]
+2016-05-26 13:11:15,848 INFO: microblog startup [in ./__init__.py:48]
+2016-05-26 13:11:23,251 INFO: microblog startup [in ./__init__.py:48]
+2016-05-26 13:11:26,513 INFO: microblog startup [in ./__init__.py:48]
+2016-05-26 13:16:04,008 INFO: microblog startup [in ./__init__.py:48]
+2016-05-26 13:16:44,286 INFO: microblog startup [in ./__init__.py:48]
+2016-05-26 13:21:13,630 INFO: microblog startup [in ./__init__.py:48]
+2016-05-26 13:21:17,883 INFO: microblog startup [in ./__init__.py:48]

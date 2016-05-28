@@ -1,14 +1,14 @@
 from flask import render_template, flash, redirect, session, url_for, request, g
 from flask.ext.login import login_user, logout_user, current_user, login_required
 from __init__ import app, db, lm
-from forms import LoginForm, RegistrationForm, EditForm, PostForm
+from forms import LoginForm, RegistrationForm, EditForm, PostForm, RetrievepwdForm
 from models import User, Post
 from datetime import datetime
 from passlib.hash import sha256_crypt
 from config import POSTS_PER_PAGE
 from forms import SearchForm
 from config import MAX_SEARCH_RESULTS
-from emails import follower_notification
+from emails import send_mail_get_pwd
 
 
 @app.errorhandler(404)
@@ -182,8 +182,6 @@ def follow(username):
 		db.session.add(u)
 		db.session.commit()
 		flash('You are now following ' + username + '!')
-		# Send email to notify the followed user
-		follower_notification(user,g.user)
 		return redirect(url_for('user', username=username))
 	
 	except Exception as e:
@@ -224,3 +222,25 @@ def search():
 def search_results(query):
 	results = Post.query.whoosh_search(query, MAX_SEARCH_RESULTS).all()
 	return render_template('search_results.html',query=query,results=results)
+	
+
+@app.route('/retrieve_password/', methods=['GET', 'POST'])
+def retrieve_password():
+	error = ''
+	try:
+		form = RetrievepwdForm(request.form)
+		if form.validate_on_submit():
+			u = form.username.data
+			user = User.query.filter_by(username=u).first()
+
+			#check username 
+			if user is not None:
+				#send_mail_get_pwd(user)
+				flash('mail sent! Retrieve password from your registered email')
+				return redirect(url_for('retrieve_password'))
+			else:
+				flash("username incorrect!  Try again.!")
+		return render_template('retrieve_password.html', title='Retrieve password',form=form,error=error)
+	except Exception as e:
+		#return(str(e))
+		return render_template('retrieve_password.html', title='Retrieve password',form=form,error=error)

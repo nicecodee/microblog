@@ -2,7 +2,7 @@ from flask.ext.mail import Message
 from __init__ import mail
 from config import ADMINS
 
-def follower_notification(followed,follower):
-	msg = Message("[microblog] %s is now following you!" % follower.username,sender=ADMINS[0],recipients=[followed.email])
-	msg.body = "yo! \n Have you head of me?"
+def send_mail_get_pwd(user):
+	msg = Message("[microblog] Retrieve Your password!",sender=ADMINS[0],recipients=[user.email])
+	msg.body = "[microblog] Your original password is %s " % user.password
 	mail.send(msg)

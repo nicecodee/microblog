@@ -3,6 +3,7 @@
 
 {% block content %}
   <h1>Login</h1>
+  <br>
   <form action="" method="post" name="login">
       {{ form.hidden_tag() }}
       <p>
@@ -19,7 +20,9 @@
             <span style="color: red;">[{{ error }}]</span>
           {% endfor %}
       </p>
-      <p>{{ form.remember_me }} Remember Me</p>
+      <p>{{ form.remember_me }} Remember Me </p>
       <p><input type="submit" value="Login"></p>
+	  <br>
+	  <p><a href="{{ url_for('retrieve_password') }}"><U> Forget Password?</U></a></p>
   </form>
 {% endblock %}

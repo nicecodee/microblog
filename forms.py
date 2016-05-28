@@ -44,3 +44,6 @@ class PostForm(Form):
 	
 class SearchForm(Form):
     search = StringField('search', validators=[DataRequired()])
+	
+class RetrievepwdForm(Form):
+    username = StringField('username', validators=[DataRequired()])

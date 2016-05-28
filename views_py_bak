@@ -162,13 +162,13 @@ def edit():
         form.username.data = g.user.username
         form.about_me.data = g.user.about_me
     return render_template('edit.html', form=form)	
-		
+	
+	
 @app.route('/follow/<username>/')
 @login_required
 def follow(username):
 	try:
 		user = User.query.filter_by(username=username).first()
-		return redirect(url_for('user', username=username))
 		if user is None:
 			flash('User %s not found.' % username)
 			return redirect(url_for('index'))
@@ -179,16 +179,16 @@ def follow(username):
 		if u is None:
 			flash('Cannot follow ' + username + '.')
 			return redirect(url_for('user', username=username))
-		flash("hey")
 		db.session.add(u)
 		db.session.commit()
 		flash('You are now following ' + username + '!')
-		#The follower_notification is facing errors, so i will comment it for the moment
-		#follower_notification(user, g.user)
+		# Send email to notify the followed user
+		follower_notification(user,g.user)
 		return redirect(url_for('user', username=username))
-		
+	
 	except Exception as e:
 		return(str(e))
+		
 		
 @app.route('/unfollow/<username>/')
 @login_required
@@ -224,7 +224,3 @@ def search():
 def search_results(query):
 	results = Post.query.whoosh_search(query, MAX_SEARCH_RESULTS).all()
 	return render_template('search_results.html',query=query,results=results)
-
-
-
-

@@ -7,13 +7,14 @@
           <td><img style="max-width:80px; margin-top: -7px"  src="{{ url_for('static', filename='images/default_avatar.jpg') }}"></td>
           
 		  <td>
-              <h1>User: {{ user.username }}</h1>
-              {% if user.about_me %}<p>{{ user.about_me }}</p>{% endif %}
+              <h1>{{ user.username }}</h1>
+              {% if user.about_me %}<p><span class="label label-info"> About Me:</span>&nbsp;&nbsp; {{ user.about_me }}</p>{% endif %}
+			  <br>
               {% if user.last_seen %}<p><i>Last seen on: {{ user.last_seen }}</i></p>{% endif %}
               <p>{{ user.followers.count() }} followers | 
               {% if user.id == g.user.id %}
-                  <a href="{{ url_for('edit') }}">Edit your profile</a> |
-				  <a href="{{ url_for('edit') }}">Change password</a>
+                  <a href="{{ url_for('edit') }}">Edit profile</a> |
+				  <a href="{{ url_for('change_password') }}">Change password</a>
               {% elif not g.user.is_following(user) %}
                   <a href="{{ url_for('follow', username=user.username) }}">Follow</a>
               {% else %}
@@ -25,9 +26,21 @@
   </table>
   <hr>
 <!-- posts is a Paginate object -->
+<h3>Personal Posts:</h3><br>
 {% for post in posts.items %}
     {% include 'post.html' %}
 {% endfor %}
-{% if posts.has_prev %}<a href="{{ url_for('user', username=user.username, page=posts.prev_num) }}">&lt;&lt; Newer posts</a>{% else %}&lt;&lt; Newer posts{% endif %} | 
-{% if posts.has_next %}<a href="{{ url_for('user', username=user.username, page=posts.next_num) }}">Older posts &gt;&gt;</a>{% else %}Older posts &gt;&gt;{% endif %}
+
+<div class="page">
+	<ul class="pager">
+	{% if posts.has_prev %}
+		<li class="previous"><a href="{{ url_for('user', username=user.username, page=posts.prev_num) }}"><span aria-hidden="true">&lt;&lt;</span> Prev</a></li>
+	{% endif %} 
+	
+	{% if posts.has_next %}
+		<li class="next"><a href="{{ url_for('user', username=user.username, page=posts.next_num) }}">Next <span aria-hidden="true">&gt;&gt;</span></a></li>
+	{% endif %}
+	</ul>
+</div>
 {% endblock %}
+

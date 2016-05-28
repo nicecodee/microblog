@@ -1,7 +1,19 @@
-<table>
-    <tr valign="top">
-        <td><img style="max-width:50px; margin-top: -7px"  src="{{ url_for('static', filename='images/default_avatar.jpg') }}"></td>
-		<td><i>{{ post.author.username }} says:</i><br>{{ post.body }}</td>
-    </tr>
-</table>
-<br>
+<div class="comment">
+	<ul>
+		<li>
+			<div class="comment-thumbnail"><a href="{{ url_for('user', username=post.author.username) }}">
+				<img style="max-width: 45px; margin-top: -7px"  src="{{ url_for('static', filename='images/default_avatar.jpg') }}"></a> 
+			</div>
+			<div class="comment-body">
+				<p>
+					<span class="label label-primary">{{ post.author.username }}</span>
+					<span class="flask-moment" data-timestamp="2013-01-20T13:11:23Z" data-format="fromNow(0)" data-refresh="0">{{ post.timestamp }}</span>
+				</p>
+				<div style="overflow: auto;">
+						<p style="white-space: pre-wrap;">{{ post.body }}</p>
+				</div>
+			</div>
+
+		</li>
+	</ul>
+</div>

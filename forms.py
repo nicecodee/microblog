@@ -47,3 +47,9 @@ class SearchForm(Form):
 	
 class RetrievepwdForm(Form):
     username = StringField('username', validators=[DataRequired()])
+	
+class ChangepwdForm(Form):
+	old_password = PasswordField('Old Password', [validators.Required()])	
+	new_password = PasswordField('New Password', [validators.Required(),validators.Length(min=6, max=30),
+				validators.EqualTo('confirm', message="Password must match")])	
+	confirm = PasswordField('Repeat Password')

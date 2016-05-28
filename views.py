@@ -1,7 +1,7 @@
 from flask import render_template, flash, redirect, session, url_for, request, g
 from flask.ext.login import login_user, logout_user, current_user, login_required
 from __init__ import app, db, lm
-from forms import LoginForm, RegistrationForm, EditForm, PostForm, RetrievepwdForm
+from forms import LoginForm, RegistrationForm, EditForm, PostForm, RetrievepwdForm, ChangepwdForm
 from models import User, Post
 from datetime import datetime
 from passlib.hash import sha256_crypt
@@ -32,7 +32,6 @@ def index(page=1):
 			post = Post(body=form.post.data, timestamp=datetime.utcnow(), author=g.user)
 			db.session.add(post)
 			db.session.commit()
-			flash('Your post is now live!')
 			return redirect(url_for('index'))
 
 		posts = g.user.followed_posts().paginate(page, POSTS_PER_PAGE, False)
@@ -162,6 +161,34 @@ def edit():
         form.username.data = g.user.username
         form.about_me.data = g.user.about_me
     return render_template('edit.html', form=form)	
+
+@app.route('/change_password/', methods=['GET', 'POST'])
+@login_required
+def change_password():
+	error = ''
+	try:
+		form = ChangepwdForm()
+		if form.validate_on_submit():
+			curr_pwd = g.user.password
+			input_old_pwd = form.old_password.data
+			input_new_pwd = form.new_password.data			
+			
+			#flash('form error %s' % form.errors)
+			#check input old password
+			if sha256_crypt.verify(input_old_pwd, curr_pwd):
+				p = sha256_crypt.encrypt(input_new_pwd) #hash the New password
+				g.user.password = p
+				db.session.add(g.user)
+				db.session.commit()
+				flash("Password changed! For your account safety, please re-login!")
+				return redirect(url_for('change_password'))
+			flash("Old password incorrect, try again!")	
+		return render_template('change_password.html', title='Change Password',form=form,error=error)
+						   
+	except Exception as e:
+		#return(str(e))	
+		#flash("Old password incorrect, try again!")	
+		return render_template('change_password.html', title='Change Password',form=form,error=error)
 	
 	
 @app.route('/follow/<username>/')
@@ -242,5 +269,5 @@ def retrieve_password():
 				flash("username incorrect!  Try again.!")
 		return render_template('retrieve_password.html', title='Retrieve password',form=form,error=error)
 	except Exception as e:
-		#return(str(e))
+		return(str(e))
 		return render_template('retrieve_password.html', title='Retrieve password',form=form,error=error)

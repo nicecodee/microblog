@@ -1,6 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<!-- include jquery.js and moment.js -->
+	{{ moment.include_jquery() }}
+	{{ moment.include_moment() }}
+	
+    <!-- Bootstrap -->
+	<link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet">
+    <link rel="shortcut icon" href="/static/favicon.ico">
+	
     {% if title %}
     <title>{{ title }} - microblog</title>
     {% else %}
@@ -10,9 +18,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">  
         
-    <!-- Bootstrap -->
-	<link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet">
-    <link rel="shortcut icon" href="/static/favicon.ico">
 </head>
 <body>    
     <nav class="navbar navbar-inverse" role="navigation">

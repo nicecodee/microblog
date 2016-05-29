@@ -262,12 +262,12 @@ def retrieve_password():
 
 			#check username 
 			if user is not None:
-				#send_mail_get_pwd(user)
+				#send_mail_get_pwd(user)   #this fuction is working, but i will disabled it for the moment
 				flash('mail sent! Retrieve password from your registered email')
 				return redirect(url_for('retrieve_password'))
 			else:
 				flash("username incorrect!  Try again.!")
 		return render_template('retrieve_password.html', title='Retrieve password',form=form,error=error)
 	except Exception as e:
-		return(str(e))
+		#return(str(e))
 		return render_template('retrieve_password.html', title='Retrieve password',form=form,error=error)

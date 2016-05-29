@@ -4,16 +4,20 @@ import os
 from flask.ext.login import LoginManager
 from config import basedir, ADMINS, MAIL_SERVER, MAIL_PORT, MAIL_USERNAME, MAIL_PASSWORD
 from flask.ext.mail import Mail
+from flask.ext.moment import Moment
+
 
 
 app = Flask(__name__)
 app.config.from_object('config')
 db = SQLAlchemy(app)
 mail = Mail(app)
+moment = Moment(app)
 
 lm = LoginManager()
 lm.init_app(app)
 lm.login_view = 'login'
+
 
 #import views and models at the bottom
 import views, models

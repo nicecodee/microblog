@@ -10,7 +10,7 @@
               <h1>{{ user.username }}</h1>
               {% if user.about_me %}<p><span class="label label-info"> About Me:</span>&nbsp;&nbsp; {{ user.about_me }}</p>{% endif %}
 			  <br>
-              {% if user.last_seen %}<p><i>Last seen on: {{ user.last_seen }}</i></p>{% endif %}
+              {% if user.last_seen %}<p><i>Last seen on: {{ moment(user.last_seen).format('YYYY/MM/DD HH:MM:SS') }}</i></p>{% endif %}
               <p>{{ user.followers.count() }} followers | 
               {% if user.id == g.user.id %}
                   <a href="{{ url_for('edit') }}">Edit profile</a> |

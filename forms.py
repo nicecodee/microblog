@@ -1,5 +1,5 @@
 from flask.ext.wtf import Form
-from wtforms import StringField, BooleanField, TextField, PasswordField, validators, TextAreaField
+from wtforms import StringField, BooleanField, TextField, PasswordField, validators, TextAreaField, SubmitField
 from wtforms.validators import DataRequired, Length
 from models import User
 
@@ -8,7 +8,7 @@ class LoginForm(Form):
 	password = PasswordField('password',  [validators.Required()])
 	remember_me = BooleanField('remember_me', default=False)
 	
-
+	
 class RegistrationForm(Form):
 	username = TextField('Username', [validators.Length(min=4, max=20)])
 	email = TextField('Email Address', [validators.Length(min=8, max=50)])
@@ -39,8 +39,8 @@ class EditForm(Form):
 		
 		
 class PostForm(Form):
-    post = StringField('post', validators=[DataRequired()])
-	
+    post = StringField('', validators=[DataRequired()])
+    submit = SubmitField('Submit')
 	
 class SearchForm(Form):
     search = StringField('search', validators=[DataRequired()])

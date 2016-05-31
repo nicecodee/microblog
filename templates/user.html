@@ -2,17 +2,22 @@
 {% extends "base.html" %}
 
 {% block page_content %}
-  <table>
+  <div class="page-header">
       <tr valign="top">
-          <td><img style="max-width:80px; margin-top: -7px"  src="{{ url_for('static', filename='images/default_avatar.jpg') }}"></td>
+          <td><img class="img-circle" style="max-width:80px; margin-top: -7px"  src="{{ url_for('static', filename='images/default_avatar.jpg') }}"></td>
           
-		  <td>
-              <div class="page-header">
-				<h1>Hello, {{ g.user.username }}!</h1>
-			  </div>
-              {% if user.about_me %}<p><span class="label label-info"> About Me:</span>&nbsp;&nbsp; {{ user.about_me }}</p>{% endif %}
+		  <td> 
+			  <h1>{{ g.user.username }}</h1>
+			  <p><a href="mailto:{{ g.user.email }}">{{ g.user.email }}</a></p>
+              {% if user.about_me %}
+				<p><span class="label label-info"> About Me:</span>&nbsp;&nbsp; {{ 	user.about_me }}
+				</p>
+			  {% endif %}
 			  <br>
-              {% if user.last_seen %}<p><i>Last seen on: {{ moment(user.last_seen).format('YYYY/MM/DD HH:MM:SS') }}</i></p>{% endif %}
+			  <p>Member Since: {{ moment(user.regdate).format('YYYY/MM/DD') }}</p>  
+              {% if user.last_seen %}
+				  <p>Last seen on: {{ moment(user.last_seen).format('YYYY/MM/DD HH:MM:SS') }}</p>
+			  {% endif %}
               <p>{{ user.followers.count() }} followers | 
               {% if user.id == g.user.id %}
                   <a href="{{ url_for('edit') }}">Edit profile</a> |
@@ -25,13 +30,14 @@
               </p>
           </td>
       </tr>
-  </table>
+  </div>
   <hr>
 <!-- posts is a Paginate object -->
-<h3>Personal Posts:</h3><br>
+<h3>Your Posts:</h3><br>
 {% for post in posts.items %}
     {% include 'post.html' %}
 {% endfor %}
+
 
 <div class="page">
 	<ul class="pager">

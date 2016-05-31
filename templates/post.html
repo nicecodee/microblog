@@ -1,15 +1,17 @@
-<div class="comment">
-	<ul>
-		<li>
-			<div class="comment-thumbnail"><a href="{{ url_for('user', username=post.author.username) }}">
-				<img style="max-width: 45px; margin-top: -7px"  src="{{ url_for('static', filename='images/default_avatar.jpg') }}"></a> 
+<div class="posts">
+	<ul style="list-style-type:none;"> 
+		<li class="list-group-item">
+			<div class="posts-thumbnail"><a href="{{ url_for('user', username=post.author.username) }}">
+				<img class="img-circle" style="max-width: 55px; margin-top: -7px;"  align="left"  src="{{ url_for('static', filename='images/default_avatar.jpg') }}"></a> 
 			</div>
-			<div class="comment-body">
+			<div class="posts-body">
 				<p>
-					<span class="label label-primary">{{ post.author.username }}</span>
-					<span class="flask-moment">{{ moment(post.timestamp).fromNow() }}</span>	
+					<a href="{{ url_for('user', username=post.author.username) }}"><span class="label label-primary">{{ post.author.username }}</span></a>
+					<span class="post-moment" style="float:right">{{ moment(post.timestamp).fromNow() }}</span>	
 				{% if post.author.id == g.user.id %}
-					<a href="{{ url_for('delete', id=post.id) }}">Delete</a>
+ 
+					<a href="{{ url_for('delete', id=post.id) }}"><button type="button" class="btn btn-xs" aria-label="right Align"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+					</button></a>
 				{% endif %}					
 				</p>
 
@@ -17,7 +19,6 @@
 						<p style="white-space: pre-wrap;">{{ post.body }}</p>
 				</div>
 			</div>
-		
 		</li>
 	</ul>
 </div>

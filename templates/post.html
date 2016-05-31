@@ -7,16 +7,21 @@
 			<div class="comment-body">
 				<p>
 					<span class="label label-primary">{{ post.author.username }}</span>
-					<span class="flask-moment">{{ moment(post.timestamp).fromNow() }}</span>		
+					<span class="flask-moment">{{ moment(post.timestamp).fromNow() }}</span>	
+				{% if post.author.id == g.user.id %}
+					<a href="{{ url_for('delete', id=post.id) }}">Delete</a>
+				{% endif %}					
 				</p>
+
 				<div style="overflow: auto;">
 						<p style="white-space: pre-wrap;">{{ post.body }}</p>
 				</div>
 			</div>
-
+		
 		</li>
 	</ul>
 </div>
+
 
 
 

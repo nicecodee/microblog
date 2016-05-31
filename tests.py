@@ -1,10 +1,18 @@
 import os
 import unittest
 from datetime import datetime, timedelta
+from coverage import coverage
 
 from config import basedir
 from __init__ import app, db
 from models import User, Post
+
+
+# use coverage tool
+cov = coverage(branch=True, omit=['venv/*', 'tests.py'])
+cov.start()
+
+
 
 class TestCase(unittest.TestCase):
     def setUp(self):
@@ -113,5 +121,19 @@ class TestCase(unittest.TestCase):
 		
 
 		
+	
+	
+
+
 if __name__ == '__main__':
-    unittest.main()
+    try:
+        unittest.main()
+    except:
+        pass
+    cov.stop()
+    cov.save()
+    print("\n\nCoverage Report:\n")
+    cov.report()
+    print("HTML version: " + os.path.join(basedir, "tmp/coverage/index.html"))
+    cov.html_report(directory='tmp/coverage')
+    cov.erase()	

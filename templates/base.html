@@ -20,52 +20,56 @@
         
 </head>
 <body>    
-    <nav class="navbar navbar-inverse" role="navigation">
-        <div class="container-fluid">
-            <div class="container">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="/index">Microblog:</a>
-                </div>
-                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                    <ul class="nav navbar-nav">
-                        <li><a href="/index">Home</a></li>
-						{% if session.logged_in %}
-							<li><a href="{{ url_for('user', username=g.user.username) }}"><span class="glyphicon glyphicon-user"></span> {{g.user.username}}</a></li>
-							<li> <a href="{{ url_for('logout') }}"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
-							<li><form form class="navbar-form navbar-left"  action="{{ url_for('search') }}" method="post" name="search">
-								  {{ g.search_form.hidden_tag() }}{{ g.search_form.search(size=20) }}<input type="submit" value="Search"></form></li>
-						{% else %}
-							<li><a href="/post/about-me">About Me</a></li>
-							<li><a href="/post/about-this-blog">About This Blog</a></li>
-							<li> <a href="{{ url_for('register') }}"><span class="glyphicon glyphicon-pencil"></span> Signup</a></li>
-						{% endif %}
-                    </ul>
-                </div>
-            </div>
+	{% block navbar %}
+    <div class="navbar navbar-inverse" role="navigation">
+        <div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle"
+					data-toggle="collapse" data-target=".navbar-collapse">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="/index">Microblog:</a>
+			</div>
+			<div class="navbar-collapse collapse">
+				<ul class="nav navbar-nav">
+					<li><a href="/index">Home</a></li>
+					{% if session.logged_in %}
+						<li><a href="{{ url_for('user', username=g.user.username) }}"><span class="glyphicon glyphicon-user"></span> {{g.user.username}}</a></li>
+						<li> <a href="{{ url_for('logout') }}"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+						<li><form form class="navbar-form navbar-left"  action="{{ url_for('search') }}" method="post" name="search">
+							  {{ g.search_form.hidden_tag() }}{{ g.search_form.search(size=20) }}<input type="submit" value="Search"></form></li>
+					{% else %}
+						<li><a href="/post/about-me">About Me</a></li>
+						<li><a href="/post/about-this-blog">About This Blog</a></li>
+						<li> <a href="{{ url_for('register') }}"><span class="glyphicon glyphicon-pencil"></span> Signup</a></li>
+					{% endif %}
+				</ul>
+			</div>
         </div> 
-    </nav>
-	
+    </div>
+	{% endblock %}
 
 	
-	<div class="container" style="min-height:100%; max-width:80%">
-		<hr>
+	<div class="container">
 		{% with messages = get_flashed_messages() %}
 			{% if messages %}
 				{% for message in messages %}
 					<div class="alert alert-warning alert-dismissible" role="alert">
-					<button type="button" class="close" data-dismiss="alert" aria-label="close">x</button>
+						<button type="button" class="close" data-dismiss="alert">&times;</button>
 						{{message}}
 					</div>
 				{% endfor %}
 			{% endif %}
 		{% endwith %}
-		{% block content %}{% endblock %}
+		
+		{% block content %}
+			<div class="container">
+				{% block page_content %}{% endblock %}
+			</div>
+		{% endblock %}
 	</div>
 	<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 	<script type="text/javascript" src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
